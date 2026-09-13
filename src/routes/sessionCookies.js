@@ -2,7 +2,6 @@ const fs = require('fs');
 const path = require('path');
 const express = require('express');
 const config = require('../config');
-const { openPortal, restoreSessionWithCookies, normalizeCookie } = require('../scraper/algeriePoste');
 const { requireAdminToken } = require('../middleware/requireAdminToken');
 
 const router = express.Router();
@@ -21,9 +20,6 @@ function extractCookieList(body) {
       throw err;
     }
     if (typeof cookie.domain !== 'string' || !cookie.domain) {
-      // The browser's setCookie call needs domain (or url) per cookie — catching
-      // this here turns a confusing mid-flight protocol error, after a browser
-      // has already been launched, into an immediate, specific 400.
       const err = new Error(`cookie "${cookie.name}" is missing a "domain" field`);
       err.statusCode = 400;
       throw err;
@@ -32,55 +28,29 @@ function extractCookieList(body) {
   return list;
 }
 
-// Lets a session refresh be pushed here instead of SSHing into the server to
-// overwrite secrets/session-cookies.json by hand. The pasted cookies are
-// tried against the live portal before anything is written to disk, so a bad
-// paste never clobbers a working session — and this check is free (it's a
-// login check, not a relevé query, so it doesn't cost anything on Algerie
-// Poste's side).
-router.post('/', requireAdminToken, async (req, res) => {
-  let browser;
+// Just writes the pasted cookie export to secrets/session-cookies.json — the
+// same file loadSessionCookies() reads at the start of every /scrape run.
+// No browser involved here; whether these cookies actually authenticate is
+// found out the normal way, the next time /scrape or run.js uses them.
+router.post('/', requireAdminToken, (req, res) => {
   try {
+    console.log('[session-cookies] update request received');
+
     const rawList = extractCookieList(req.body);
-    const cookies = rawList.map(normalizeCookie);
-
-    // openPortal() failures are infra/connectivity problems (browser wouldn't
-    // launch, portal unreachable) and keep their own statusCode. Once the
-    // browser exists, though, any failure trying these specific cookies is
-    // about the payload the caller sent — reported as 422 regardless of what
-    // it looked like internally, distinct from openPortal's own error classes.
-    const opened = await openPortal();
-    browser = opened.browser;
-
-    let authenticated;
-    try {
-      authenticated = await restoreSessionWithCookies(opened.page, cookies);
-    } catch (err) {
-      const wrapped = new Error(`the browser rejected these cookies: ${err.message}`);
-      wrapped.statusCode = 422;
-      throw wrapped;
-    }
-
-    if (!authenticated) {
-      return res.status(422).json({
-        status: 'error',
-        authenticated: false,
-        error: 'these cookies did not authenticate against the portal — existing session file left untouched',
-      });
-    }
+    console.log(`[session-cookies] payload validated: ${rawList.length} cookies`);
 
     const targetPath = config.sessionCookiesPath;
     fs.mkdirSync(path.dirname(targetPath), { recursive: true });
     const tmpPath = `${targetPath}.tmp-${process.pid}`;
     fs.writeFileSync(tmpPath, JSON.stringify(rawList, null, 2));
     fs.renameSync(tmpPath, targetPath);
+    console.log(`[session-cookies] wrote ${rawList.length} cookies to ${targetPath}`);
 
-    res.json({ status: 'ok', authenticated: true, cookie_count: cookies.length });
+    res.json({ status: 'ok', cookie_count: rawList.length });
   } catch (err) {
+    console.error(`[session-cookies] rejected: ${err.message}`);
     const statusCode = err.statusCode || 500;
     res.status(statusCode).json({ error: err.message });
-  } finally {
-    if (browser) await browser.close();
   }
 });
 

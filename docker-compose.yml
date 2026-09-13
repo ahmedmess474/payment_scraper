@@ -4,6 +4,13 @@ services:
     image: payment-scraper:latest
     container_name: payment-scraper
     restart: unless-stopped
+    # Runs as the host's own uid:gid instead of the image's built-in
+    # "pptruser" (whose uid isn't 1000 in every image tag) — this is what
+    # actually makes the bind-mounted ./secrets and ./data writable, since
+    # bind mounts keep the host's ownership, not the container user's name.
+    # Override APP_UID/APP_GID in .env if your deploy user isn't 1000:1000
+    # (check with `id -u` / `id -g` on the host).
+    user: "${APP_UID:-1000}:${APP_GID:-1000}"
     env_file:
       - .env
     environment:
@@ -18,8 +25,9 @@ services:
     ports:
       - "${PORT:-3000}:3000"
     volumes:
-      # Read-only: the app only ever reads this cookie export, never writes it.
-      - ./secrets:/home/pptruser/app/secrets:ro
+      # Read-write: /session-cookies writes a fresh export here at runtime,
+      # loadSessionCookies() reads it back on every scrape.
+      - ./secrets:/home/pptruser/app/secrets
       # Scraped statements, filtered transfers, and run logs land here.
       - ./data:/home/pptruser/app/data
       # Persists Chrome's profile (cookies/session/reCAPTCHA trust) across

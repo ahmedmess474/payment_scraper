@@ -12,15 +12,35 @@
 FROM ghcr.io/puppeteer/puppeteer:25.3.0
 
 ENV NODE_ENV=production \
-    PUPPETEER_SKIP_DOWNLOAD=true
+    PUPPETEER_SKIP_DOWNLOAD=true \
+    # The base image installs Chrome under pptruser's home at build time,
+    # regardless of which uid actually runs the container later. Puppeteer's
+    # default cache-path lookup is $HOME/.cache/puppeteer, and $HOME follows
+    # whichever uid docker-compose's `user:` override resolves to at runtime
+    # (e.g. uid 1000 resolves to this image's unrelated "node" user, home
+    # /home/node) — so without pinning this explicitly, Puppeteer looks in
+    # the wrong home and reports Chrome "not found" even though it's right
+    # here. This makes browser discovery independent of the runtime uid.
+    PUPPETEER_CACHE_DIR=/home/pptruser/.cache/puppeteer
 
-# Image already runs as non-root "pptruser" (uid 1000) with this as $HOME.
+# $HOME for this image's built-in non-root user.
 WORKDIR /home/pptruser/app
 
 COPY --chown=pptruser:pptruser package.json package-lock.json ./
 RUN npm ci --omit=dev
 
 COPY --chown=pptruser:pptruser . .
+
+# docker-compose runs this container as uid:gid 1000:1000 (see APP_UID/APP_GID
+# in docker-compose.yml) to match the *host's* ownership of the bind-mounted
+# ./secrets and ./data directories — not this image's built-in "pptruser",
+# whose uid varies by image tag and is not 1000 here. Pre-create and chown the
+# Chrome profile dir to that same 1000:1000 as root, so a brand-new named
+# volume for it seeds with an owner that actually matches who runs the
+# container, instead of whichever uid this particular image's pptruser is.
+USER root
+RUN mkdir -p .puppeteer-profile && chown -R 1000:1000 .puppeteer-profile
+USER pptruser
 
 EXPOSE 3000
 

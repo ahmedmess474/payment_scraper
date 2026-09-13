@@ -2,6 +2,7 @@ const fs = require('fs');
 const path = require('path');
 const {
   openPortal,
+  closeBrowser,
   restoreSession,
   goToReleve,
   setDateRange,
@@ -64,7 +65,7 @@ const shouldSubmit = process.argv.includes('--submit');
   } catch (err) {
     endRestore('fail', { error: err.message });
     logger.summary();
-    if (browser) await browser.close();
+    if (browser) await closeBrowser(browser);
     process.exit(1);
   }
 
@@ -76,7 +77,7 @@ const shouldSubmit = process.argv.includes('--submit');
   } catch (err) {
     endNav('fail', { error: err.message });
     logger.summary();
-    if (browser) await browser.close();
+    if (browser) await closeBrowser(browser);
     process.exit(1);
   }
 
@@ -91,7 +92,7 @@ const shouldSubmit = process.argv.includes('--submit');
   } catch (err) {
     endFill('fail', { error: err.message });
     logger.summary();
-    if (browser) await browser.close();
+    if (browser) await closeBrowser(browser);
     process.exit(1);
   }
 
@@ -100,7 +101,7 @@ const shouldSubmit = process.argv.includes('--submit');
     console.log('Browser left open for inspection — close the window or Ctrl+C here to stop.');
     process.on('SIGINT', async () => {
       logger.summary();
-      if (browser) await browser.close();
+      if (browser) await closeBrowser(browser);
       process.exit(0);
     });
     return;
@@ -114,7 +115,7 @@ const shouldSubmit = process.argv.includes('--submit');
   } catch (err) {
     endSubmit('fail', { error: err.message });
     logger.summary();
-    if (browser) await browser.close();
+    if (browser) await closeBrowser(browser);
     process.exit(1);
   }
 
@@ -130,7 +131,7 @@ const shouldSubmit = process.argv.includes('--submit');
   } catch (err) {
     endExtract('fail', { error: err.message });
     logger.summary();
-    if (browser) await browser.close();
+    if (browser) await closeBrowser(browser);
     process.exit(1);
   }
 
@@ -147,11 +148,11 @@ const shouldSubmit = process.argv.includes('--submit');
   } catch (err) {
     console.error(`Failed to write output files: ${err.message}`);
     logger.summary();
-    await browser.close();
+    await closeBrowser(browser);
     process.exit(1);
   }
 
   logger.summary();
-  await browser.close();
+  await closeBrowser(browser);
   process.exit(0);
 })();

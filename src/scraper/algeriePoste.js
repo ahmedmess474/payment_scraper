@@ -55,9 +55,8 @@ function loadSessionCookies(filePath) {
   return list.map(normalizeCookie);
 }
 
-// Split out of restoreSession() so a cookie payload can be tried against the
-// live portal (see routes/sessionCookies.js) before it's ever written to the
-// session cookie file — a bad paste should never clobber a working session.
+// Split out of restoreSession() purely to separate "load cookies from the
+// session file" from "try these specific cookies against the live portal".
 async function restoreSessionWithCookies(page, cookies) {
   const { baseUrl } = config.algeriePoste;
 
@@ -272,6 +271,33 @@ async function extractReleve(page) {
   };
 }
 
+// browser.close() alone can leave the underlying OS process — and, with
+// headless:false, its visible window — running rather than actually exiting.
+// Closing every page first, then force-killing the process if it's somehow
+// still alive after close(), is what guarantees the next launch never finds
+// a leftover window still sitting there from the previous request.
+async function closeBrowser(browser) {
+  if (!browser) return;
+
+  try {
+    const pages = await browser.pages();
+    await Promise.all(pages.map((page) => page.close().catch(() => {})));
+  } catch (err) {
+    // best-effort — still try to close the browser itself below
+  }
+
+  try {
+    await browser.close();
+  } catch (err) {
+    // best-effort — the kill() below is the real backstop
+  }
+
+  const proc = browser.process ? browser.process() : null;
+  if (proc && proc.exitCode === null && !proc.killed) {
+    proc.kill('SIGKILL');
+  }
+}
+
 async function openPortal() {
   const { loginUrl } = config.algeriePoste;
 
@@ -309,7 +335,7 @@ async function openPortal() {
     await page.goto(loginUrl, { waitUntil: 'networkidle2' });
     return { browser, page };
   } catch (err) {
-    await browser.close().catch(() => {});
+    await closeBrowser(browser);
     const wrapped = new Error(`could not reach the Algerie Poste portal at ${loginUrl}: ${err.message}`);
     wrapped.statusCode = 502;
     throw wrapped;
@@ -318,9 +344,8 @@ async function openPortal() {
 
 module.exports = {
   openPortal,
+  closeBrowser,
   restoreSession,
-  restoreSessionWithCookies,
-  normalizeCookie,
   goToReleve,
   setDateFilter,
   setDateRange,

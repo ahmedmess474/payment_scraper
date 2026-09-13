@@ -1,6 +1,7 @@
 const express = require('express');
 const {
   openPortal,
+  closeBrowser,
   restoreSession,
   goToReleve,
   setDateRange,
@@ -89,7 +90,7 @@ router.post('/', requireAdminToken, async (req, res) => {
     const statusCode = err.statusCode || 500;
     res.status(statusCode).json({ error: err.message });
   } finally {
-    if (browser) await browser.close();
+    await closeBrowser(browser);
   }
 });
 
