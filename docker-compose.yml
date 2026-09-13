@@ -17,20 +17,18 @@ services:
       # Overrides whatever's in .env: the container has no display, so this
       # must run headless regardless of what a local dev's .env says.
       PUPPETEER_HEADLESS: "true"
-      # Overrides .env's PORT too: that value is reused below to pick the
-      # *host* port, but the app inside the container must stay on 3000 to
-      # match EXPOSE and the healthcheck. Change the port this is reachable
-      # on from the host by editing .env's PORT, not this line.
-      PORT: "3000"
-    ports:
-      - "${PORT:-3000}:3000"
-    # Lets the container reach a SOCKS/HTTP proxy listening on the host's
-    # localhost (e.g. an SSH -R reverse tunnel to an Algerian machine, since
-    # the portal only accepts Algerian IPs) — from inside the container,
-    # 127.0.0.1 means the container itself, not the host, without this.
-    # Pair with PROXY_SERVER=socks5://host.docker.internal:<port> in .env.
-    extra_hosts:
-      - "host.docker.internal:host-gateway"
+    # Shares the host's network namespace directly instead of Docker's usual
+    # bridge network. Needed for PROXY_SERVER=socks5://127.0.0.1:<port> to
+    # reach an SSH -R reverse tunnel (see README/deploy notes) — that tunnel
+    # is deliberately bound to the host's loopback only, for security, and a
+    # bridge-networked container's "localhost" is the container itself, not
+    # the host, so it can never see a loopback-only service no matter how
+    # it's addressed (host.docker.internal included — that still arrives via
+    # the bridge interface, which a loopback-bound listener never accepts).
+    # With host networking there's no separate internal/external port to
+    # reconcile: the app binds directly to whatever PORT is set to in .env,
+    # and `ports:` is meaningless here (and invalid to combine with this).
+    network_mode: host
     volumes:
       # Read-write: /session-cookies writes a fresh export here at runtime,
       # loadSessionCookies() reads it back on every scrape.
@@ -44,7 +42,7 @@ services:
     # this is the other half of the --disable-dev-shm-usage flag in code.
     shm_size: "1gb"
     healthcheck:
-      test: ["CMD", "node", "-e", "require('http').get('http://localhost:3000/health', r => process.exit(r.statusCode === 200 ? 0 : 1)).on('error', () => process.exit(1))"]
+      test: ["CMD", "node", "-e", "require('http').get(`http://localhost:$${process.env.PORT || 3000}/health`, r => process.exit(r.statusCode === 200 ? 0 : 1)).on('error', () => process.exit(1))"]
       interval: 30s
       timeout: 5s
       retries: 3
