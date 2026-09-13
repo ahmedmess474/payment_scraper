@@ -38,14 +38,18 @@ function normalizeCookie(raw) {
 
 function loadSessionCookies(filePath) {
   if (!fs.existsSync(filePath)) {
-    throw new Error(`Session cookie file not found: ${filePath}`);
+    const err = new Error(`Session cookie file not found: ${filePath}`);
+    err.statusCode = 503;
+    throw err;
   }
 
   const raw = JSON.parse(fs.readFileSync(filePath, 'utf-8'));
   const list = Array.isArray(raw) ? raw : raw.cookies;
 
   if (!Array.isArray(list) || list.length === 0) {
-    throw new Error(`Session cookie file has no cookies: ${filePath}`);
+    const err = new Error(`Session cookie file has no cookies: ${filePath}`);
+    err.statusCode = 503;
+    throw err;
   }
 
   return list.map(normalizeCookie);
@@ -57,9 +61,15 @@ function loadSessionCookies(filePath) {
 async function restoreSessionWithCookies(page, cookies) {
   const { baseUrl } = config.algeriePoste;
 
-  await page.goto(baseUrl, { waitUntil: 'networkidle2' });
-  await page.setCookie(...cookies);
-  await page.goto(`${baseUrl}/compte`, { waitUntil: 'networkidle2' });
+  try {
+    await page.goto(baseUrl, { waitUntil: 'networkidle2' });
+    await page.setCookie(...cookies);
+    await page.goto(`${baseUrl}/compte`, { waitUntil: 'networkidle2' });
+  } catch (err) {
+    const wrapped = new Error(`could not apply the session cookies against the portal: ${err.message}`);
+    wrapped.statusCode = 502;
+    throw wrapped;
+  }
 
   try {
     await page.waitForSelector(selectors.login.loggedInMarker, { visible: true, timeout: 15000 });
@@ -111,7 +121,9 @@ async function goToReleve(page) {
     .catch(() => false);
 
   if (!onFilterPage) {
-    throw new Error(`Did not land on the relevé filter page (landed on ${page.url()})`);
+    const err = new Error(`Did not land on the relevé filter page (landed on ${page.url()})`);
+    err.statusCode = 502;
+    throw err;
   }
 }
 
@@ -134,7 +146,9 @@ async function setDateFilter(page, group, { day, month, year }) {
   );
 
   if (!dayAvailable) {
-    throw new Error(`Day ${dayValue} is not a valid option for ${monthValue}/${yearValue}`);
+    const err = new Error(`Day ${dayValue} is not a valid option for ${monthValue}/${yearValue}`);
+    err.statusCode = 502;
+    throw err;
   }
 
   await page.select(group.day, dayValue);
@@ -149,9 +163,11 @@ async function setDateFilter(page, group, { day, month, year }) {
   );
 
   if (actual.day !== dayValue || actual.month !== monthValue || actual.year !== yearValue) {
-    throw new Error(
+    const err = new Error(
       `Date did not stick: expected ${yearValue}-${monthValue}-${dayValue}, got ${actual.year}-${actual.month}-${actual.day}`
     );
+    err.statusCode = 502;
+    throw err;
   }
 }
 
@@ -170,7 +186,9 @@ async function submitReleveFilter(page) {
     .catch(() => false);
 
   if (!hasResultsTable) {
-    throw new Error(`No results table appeared after submit (landed on ${page.url()})`);
+    const err = new Error(`No results table appeared after submit (landed on ${page.url()})`);
+    err.statusCode = 502;
+    throw err;
   }
 }
 
@@ -258,26 +276,44 @@ async function openPortal() {
   const { loginUrl } = config.algeriePoste;
 
   if (!loginUrl) {
-    throw new Error('ALGERIE_POSTE_LOGIN_URL is not set in .env');
+    const err = new Error('ALGERIE_POSTE_LOGIN_URL is not set in .env');
+    err.statusCode = 500;
+    throw err;
   }
 
-  const browser = await puppeteer.launch({
-    headless: config.puppeteerHeadless,
-    defaultViewport: { width: 1366, height: 900 },
-    userDataDir: config.puppeteerUserDataDir,
-    handleSIGINT: false,
-    handleSIGTERM: false,
-    handleSIGHUP: false,
-    // --disable-dev-shm-usage: Docker's default /dev/shm is 64MB, too small for
-    // Chrome's shared memory use — without this flag Chrome renders pages fine
-    // then crashes mid-run inside a container. Harmless outside Docker too.
-    args: ['--no-sandbox', '--disable-setuid-sandbox', '--disable-dev-shm-usage'],
-  });
+  let browser;
+  try {
+    browser = await puppeteer.launch({
+      headless: config.puppeteerHeadless,
+      defaultViewport: { width: 1366, height: 900 },
+      userDataDir: config.puppeteerUserDataDir,
+      handleSIGINT: false,
+      handleSIGTERM: false,
+      handleSIGHUP: false,
+      // --disable-dev-shm-usage: Docker's default /dev/shm is 64MB, too small for
+      // Chrome's shared memory use — without this flag Chrome renders pages fine
+      // then crashes mid-run inside a container. Harmless outside Docker too.
+      args: ['--no-sandbox', '--disable-setuid-sandbox', '--disable-dev-shm-usage'],
+    });
+  } catch (err) {
+    const wrapped = new Error(`failed to launch the browser: ${err.message}`);
+    wrapped.statusCode = 500;
+    throw wrapped;
+  }
 
-  const page = await browser.newPage();
-  await page.goto(loginUrl, { waitUntil: 'networkidle2' });
-
-  return { browser, page };
+  // Past this point the browser exists — if anything below fails, close it
+  // here rather than leaving it to the caller, which only learns about the
+  // browser from this function's return value and never gets one on failure.
+  try {
+    const page = await browser.newPage();
+    await page.goto(loginUrl, { waitUntil: 'networkidle2' });
+    return { browser, page };
+  } catch (err) {
+    await browser.close().catch(() => {});
+    const wrapped = new Error(`could not reach the Algerie Poste portal at ${loginUrl}: ${err.message}`);
+    wrapped.statusCode = 502;
+    throw wrapped;
+  }
 }
 
 module.exports = {

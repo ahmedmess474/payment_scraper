@@ -31,6 +31,14 @@ function extractCookieList(body) {
       err.statusCode = 400;
       throw err;
     }
+    if (typeof cookie.domain !== 'string' || !cookie.domain) {
+      // The browser's setCookie call needs domain (or url) per cookie — catching
+      // this here turns a confusing mid-flight protocol error, after a browser
+      // has already been launched, into an immediate, specific 400.
+      const err = new Error(`cookie "${cookie.name}" is missing a "domain" field`);
+      err.statusCode = 400;
+      throw err;
+    }
   }
   return list;
 }
@@ -47,9 +55,22 @@ router.post('/', requireAdminToken, async (req, res) => {
     const rawList = extractCookieList(req.body);
     const cookies = rawList.map(normalizeCookie);
 
+    // openPortal() failures are infra/connectivity problems (browser wouldn't
+    // launch, portal unreachable) and keep their own statusCode. Once the
+    // browser exists, though, any failure trying these specific cookies is
+    // about the payload the caller sent — reported as 422 regardless of what
+    // it looked like internally, distinct from openPortal's own error classes.
     const opened = await openPortal();
     browser = opened.browser;
-    const authenticated = await restoreSessionWithCookies(opened.page, cookies);
+
+    let authenticated;
+    try {
+      authenticated = await restoreSessionWithCookies(opened.page, cookies);
+    } catch (err) {
+      const wrapped = new Error(`the browser rejected these cookies: ${err.message}`);
+      wrapped.statusCode = 422;
+      throw wrapped;
+    }
 
     if (!authenticated) {
       return res.status(422).json({

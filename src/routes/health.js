@@ -11,22 +11,31 @@ const router = express.Router();
 // a real "is our session still authenticated" check belongs to /scrape's result,
 // not to a liveness probe.
 router.get('/', (req, res) => {
-  const path = config.sessionCookiesPath;
+  const filePath = config.sessionCookiesPath;
 
-  if (!fs.existsSync(path)) {
+  if (!fs.existsSync(filePath)) {
     return res.status(503).json({ status: 'error', session_cookies_present: false, error: 'session cookie file not found' });
   }
 
+  let raw;
   try {
-    const raw = JSON.parse(fs.readFileSync(path, 'utf-8'));
-    const list = Array.isArray(raw) ? raw : raw.cookies;
-    if (!Array.isArray(list) || list.length === 0) {
-      return res.status(503).json({ status: 'error', session_cookies_present: false, error: 'session cookie file has no cookies' });
-    }
-    res.json({ status: 'ok', session_cookies_present: true, cookie_count: list.length });
+    raw = fs.readFileSync(filePath, 'utf-8');
   } catch (err) {
-    res.status(503).json({ status: 'error', session_cookies_present: false, error: `session cookie file is not valid JSON: ${err.message}` });
+    return res.status(503).json({ status: 'error', session_cookies_present: false, error: `could not read session cookie file: ${err.message}` });
   }
+
+  let parsed;
+  try {
+    parsed = JSON.parse(raw);
+  } catch (err) {
+    return res.status(503).json({ status: 'error', session_cookies_present: false, error: `session cookie file is not valid JSON: ${err.message}` });
+  }
+
+  const list = Array.isArray(parsed) ? parsed : parsed.cookies;
+  if (!Array.isArray(list) || list.length === 0) {
+    return res.status(503).json({ status: 'error', session_cookies_present: false, error: 'session cookie file has no cookies' });
+  }
+  res.json({ status: 'ok', session_cookies_present: true, cookie_count: list.length });
 });
 
 module.exports = router;

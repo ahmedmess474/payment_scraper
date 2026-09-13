@@ -9,23 +9,9 @@ const {
 } = require('../scraper/algeriePoste');
 const { filterTransfersAndDeposits } = require('../utils/transactions');
 const { createRunLogger } = require('../utils/logger');
+const { parseIsoDate, toComparableDate } = require('../utils/dates');
 
 const router = express.Router();
-
-function parseIsoDate(value, label) {
-  const match = value && String(value).match(/^(\d{4})-(\d{2})-(\d{2})$/);
-  if (!match) {
-    const err = new Error(`${label} must be in YYYY-MM-DD format, got: ${value ?? '(missing)'}`);
-    err.statusCode = 400;
-    throw err;
-  }
-  const [, year, month, day] = match;
-  return { year: Number(year), month: Number(month), day: Number(day) };
-}
-
-function toComparableDate({ year, month, day }) {
-  return new Date(year, month - 1, day);
-}
 
 // Triggers a real relevé query against the live Algerie Poste portal and waits
 // for the result - this is a paid operation on their side (see config.cost),
@@ -33,10 +19,22 @@ function toComparableDate({ year, month, day }) {
 // is implemented here (the codebase already had this flagged as "planned
 // separately", not built) - the caller is currently trusted not to hammer it.
 router.post('/', async (req, res) => {
-  const logger = createRunLogger();
+  let logger;
   let browser;
 
   try {
+    // createRunLogger() touches the filesystem (mkdir + a log file) — if that
+    // fails (e.g. a permission mismatch on the Docker data volume) it must
+    // not throw before the try block starts, or it becomes an unhandled
+    // rejection that can take the whole process down instead of just this request.
+    logger = createRunLogger();
+
+    if (!req.body || typeof req.body !== 'object') {
+      const err = new Error('request body must be JSON with "start" and "end" date fields');
+      err.statusCode = 400;
+      throw err;
+    }
+
     const start = parseIsoDate(req.body.start, 'start');
     const end = parseIsoDate(req.body.end, 'end');
     if (toComparableDate(end) < toComparableDate(start)) {
@@ -82,8 +80,10 @@ router.post('/', async (req, res) => {
     logger.summary();
     res.json(transfers);
   } catch (err) {
-    logger.log('http.scrape', 'fail', { error: err.message });
-    logger.summary();
+    if (logger) {
+      logger.log('http.scrape', 'fail', { error: err.message });
+      logger.summary();
+    }
     const statusCode = err.statusCode || 500;
     res.status(statusCode).json({ error: err.message });
   } finally {

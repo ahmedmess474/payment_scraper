@@ -27,7 +27,17 @@ const shouldSubmit = process.argv.includes('--submit');
     process.exit(1);
   }
 
-  const logger = createRunLogger();
+  let logger;
+  try {
+    // Touches the filesystem (mkdir + a log file) before any browser work —
+    // let a failure here (e.g. no write permission on data/) produce a clear
+    // message instead of an uncaught exception from inside the async IIFE.
+    logger = createRunLogger();
+  } catch (err) {
+    console.error(`Failed to initialize run logger: ${err.message}`);
+    process.exit(1);
+  }
+
   const endLaunch = logger.startStep('session.launch');
   let browser;
   let page;
@@ -127,12 +137,19 @@ const shouldSubmit = process.argv.includes('--submit');
   const transfers = filterTransfersAndDeposits(result);
   console.log(`Filtered to ${transfers.transactionCount} VIREMENT/VERSEMENT transactions.`);
 
-  const fullPath = path.join(config.dataDir, `releve-${logger.runId}.json`);
-  const transfersPath = path.join(config.dataDir, `releve-${logger.runId}-transfers.json`);
-  fs.writeFileSync(fullPath, JSON.stringify(result, null, 2));
-  fs.writeFileSync(transfersPath, JSON.stringify(transfers, null, 2));
-  console.log('Saved:', fullPath);
-  console.log('Saved:', transfersPath);
+  try {
+    const fullPath = path.join(config.dataDir, `releve-${logger.runId}.json`);
+    const transfersPath = path.join(config.dataDir, `releve-${logger.runId}-transfers.json`);
+    fs.writeFileSync(fullPath, JSON.stringify(result, null, 2));
+    fs.writeFileSync(transfersPath, JSON.stringify(transfers, null, 2));
+    console.log('Saved:', fullPath);
+    console.log('Saved:', transfersPath);
+  } catch (err) {
+    console.error(`Failed to write output files: ${err.message}`);
+    logger.summary();
+    await browser.close();
+    process.exit(1);
+  }
 
   logger.summary();
   await browser.close();
