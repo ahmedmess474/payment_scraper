@@ -22,6 +22,7 @@ module.exports = {
     perPageDa: Number(process.env.COST_PER_PAGE_DA || 5),
     confirmThresholdDa: Number(process.env.COST_CONFIRM_THRESHOLD_DA || 200),
   },
+  adminToken: process.env.ADMIN_TOKEN,
   sessionCookiesPath: path.resolve(
     __dirname,
     '..',

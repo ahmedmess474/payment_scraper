@@ -51,9 +51,11 @@ function loadSessionCookies(filePath) {
   return list.map(normalizeCookie);
 }
 
-async function restoreSession(page) {
+// Split out of restoreSession() so a cookie payload can be tried against the
+// live portal (see routes/sessionCookies.js) before it's ever written to the
+// session cookie file — a bad paste should never clobber a working session.
+async function restoreSessionWithCookies(page, cookies) {
   const { baseUrl } = config.algeriePoste;
-  const cookies = loadSessionCookies(config.sessionCookiesPath);
 
   await page.goto(baseUrl, { waitUntil: 'networkidle2' });
   await page.setCookie(...cookies);
@@ -74,6 +76,11 @@ async function restoreSession(page) {
     );
     return false;
   }
+}
+
+async function restoreSession(page) {
+  const cookies = loadSessionCookies(config.sessionCookiesPath);
+  return restoreSessionWithCookies(page, cookies);
 }
 
 async function typeHumanLike(page, selector, text) {
@@ -276,6 +283,8 @@ async function openPortal() {
 module.exports = {
   openPortal,
   restoreSession,
+  restoreSessionWithCookies,
+  normalizeCookie,
   goToReleve,
   setDateFilter,
   setDateRange,
