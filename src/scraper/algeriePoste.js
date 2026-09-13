@@ -307,6 +307,18 @@ async function openPortal() {
     throw err;
   }
 
+  const { server: proxyServer, username: proxyUsername, password: proxyPassword } = config.proxy;
+  const args = ['--no-sandbox', '--disable-setuid-sandbox', '--disable-dev-shm-usage'];
+  if (proxyServer) {
+    args.push(`--proxy-server=${proxyServer}`);
+    // The proxy is an SSH reverse tunnel whose real outbound connection is
+    // made by a laptop that has an IPv6 address configured but no working
+    // IPv6 route — any site resource that resolves to an AAAA record fails
+    // with "Network is unreachable" on that end. Forcing Chrome to only ever
+    // request/use IPv4 avoids that regardless of what any given resource resolves to.
+    args.push('--disable-ipv6');
+  }
+
   let browser;
   try {
     browser = await puppeteer.launch({
@@ -319,7 +331,7 @@ async function openPortal() {
       // --disable-dev-shm-usage: Docker's default /dev/shm is 64MB, too small for
       // Chrome's shared memory use — without this flag Chrome renders pages fine
       // then crashes mid-run inside a container. Harmless outside Docker too.
-      args: ['--no-sandbox', '--disable-setuid-sandbox', '--disable-dev-shm-usage'],
+      args,
     });
   } catch (err) {
     const wrapped = new Error(`failed to launch the browser: ${err.message}`);
@@ -332,6 +344,9 @@ async function openPortal() {
   // browser from this function's return value and never gets one on failure.
   try {
     const page = await browser.newPage();
+    if (proxyServer && proxyUsername) {
+      await page.authenticate({ username: proxyUsername, password: proxyPassword || '' });
+    }
     await page.goto(loginUrl, { waitUntil: 'networkidle2' });
     return { browser, page };
   } catch (err) {

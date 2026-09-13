@@ -24,6 +24,13 @@ services:
       PORT: "3000"
     ports:
       - "${PORT:-3000}:3000"
+    # Lets the container reach a SOCKS/HTTP proxy listening on the host's
+    # localhost (e.g. an SSH -R reverse tunnel to an Algerian machine, since
+    # the portal only accepts Algerian IPs) — from inside the container,
+    # 127.0.0.1 means the container itself, not the host, without this.
+    # Pair with PROXY_SERVER=socks5://host.docker.internal:<port> in .env.
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
     volumes:
       # Read-write: /session-cookies writes a fresh export here at runtime,
       # loadSessionCookies() reads it back on every scrape.

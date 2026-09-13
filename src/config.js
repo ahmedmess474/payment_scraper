@@ -12,6 +12,16 @@ module.exports = {
     password: process.env.ALGERIE_POSTE_PASSWORD,
   },
   puppeteerHeadless: process.env.PUPPETEER_HEADLESS !== 'false',
+  // The portal only accepts connections from Algerian IPs — a server deployed
+  // elsewhere needs its traffic routed through something that is one.
+  // PROXY_SERVER is passed straight to Chrome's --proxy-server flag, so it
+  // accepts whatever scheme Chrome does (http://, socks5://, etc.). Username/
+  // password are optional and only needed if that proxy requires auth.
+  proxy: {
+    server: process.env.PROXY_SERVER,
+    username: process.env.PROXY_USERNAME,
+    password: process.env.PROXY_PASSWORD,
+  },
   puppeteerUserDataDir: path.resolve(
     __dirname,
     '..',
