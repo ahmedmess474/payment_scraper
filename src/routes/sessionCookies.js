@@ -3,20 +3,9 @@ const path = require('path');
 const express = require('express');
 const config = require('../config');
 const { openPortal, restoreSessionWithCookies, normalizeCookie } = require('../scraper/algeriePoste');
+const { requireAdminToken } = require('../middleware/requireAdminToken');
 
 const router = express.Router();
-
-function requireAdminToken(req, res, next) {
-  if (!config.adminToken) {
-    return res.status(500).json({ error: 'ADMIN_TOKEN is not configured on the server' });
-  }
-  const header = req.get('authorization') || '';
-  const token = header.startsWith('Bearer ') ? header.slice(7) : null;
-  if (!token || token !== config.adminToken) {
-    return res.status(401).json({ error: 'missing or invalid bearer token' });
-  }
-  next();
-}
 
 function extractCookieList(body) {
   const list = Array.isArray(body) ? body : body && body.cookies;

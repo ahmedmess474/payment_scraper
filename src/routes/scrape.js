@@ -10,15 +10,17 @@ const {
 const { filterTransfersAndDeposits } = require('../utils/transactions');
 const { createRunLogger } = require('../utils/logger');
 const { parseIsoDate, toComparableDate } = require('../utils/dates');
+const { requireAdminToken } = require('../middleware/requireAdminToken');
 
 const router = express.Router();
 
 // Triggers a real relevé query against the live Algerie Poste portal and waits
 // for the result - this is a paid operation on their side (see config.cost),
-// every call to this endpoint costs real money. No cost ceiling/confirmation
-// is implemented here (the codebase already had this flagged as "planned
-// separately", not built) - the caller is currently trusted not to hammer it.
-router.post('/', async (req, res) => {
+// every call to this endpoint costs real money and returns real statement
+// data, so it sits behind the same bearer token as /session-cookies. No cost
+// ceiling/confirmation beyond that is implemented here (the codebase already
+// had this flagged as "planned separately", not built).
+router.post('/', requireAdminToken, async (req, res) => {
   let logger;
   let browser;
 
