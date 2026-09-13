@@ -3,3 +3,6 @@ node_modules/
 data/*.json
 !data/.gitkeep
 *.log
+.puppeteer-profile/
+data/logs/
+secrets/

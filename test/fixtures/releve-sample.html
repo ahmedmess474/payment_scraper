@@ -1,0 +1,4235 @@
+
+<!DOCTYPE html>
+
+<html lang="fr" class="ltr">
+
+
+<head>
+    <meta charset="utf-8">
+    <title>Relevé de compte | Algérie Poste
+ </title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="google-site-verification" content="rUsVaLZfnvE2VvQEg-3OTeMm0f1D60H8G4O8WMguls4" />
+    
+    <link rel="icon" type="image/png" href="/img/logo.png" />
+    <link rel="stylesheet" href="/css/style.min.css">
+    <link rel="stylesheet" href="/css/select2.min.css" />
+    <link rel="stylesheet" href="/css/select2-bootstrap.css" />
+    <link rel="stylesheet" href="/css/custom_v3.css">
+    <link rel="stylesheet" href="/css/toastr.min.css" />
+    <link rel="stylesheet" href="/css/font-awesome.css" />
+
+
+    
+        <style>
+        .flex-container {
+            display: flex;
+            flex-direction: row;
+            align-content: center;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            align-items: center;
+        }
+    </style>
+
+</head>
+
+
+<body class="fr" id="services-page">
+
+
+    <header class="site-header">
+        <div class="main-header scrolled">
+            <nav class="navbar navbar-fixed-top navbar-default">
+
+    <div class="navbar-header">
+        <button class="navbar-toggle" data-target="#navbar-main-header" data-toggle="collapse" type="button" style="height:100%;margin-top:0;margin-bottom:0">
+            <i class="fa fa-bars"></i>
+        </button>
+
+        <a class="navbar-brand navbar-brand-lg animated fadeInDown" style="padding: 1px 15px;" href="/">
+            <img class="logo" alt="Algérie Poste" src="/img/logo-round.png" />
+        </a>
+
+
+        <a class="navbar-brand" href="/">
+            <img class="logo" alt="Algérie Poste" src="/img/logo-round.png" />
+        </a>
+
+                <div class="visible-xs visible-sm" style="height: 100%;">
+            <h5 style="height: 100%;width: auto;" class="v-center no-margin white uppercase text-small">
+                CCP
+                &nbsp; 0023554373
+            </h5>
+        </div>
+        
+    </div>
+
+    <div class="collapse navbar-collapse" id="navbar-main-header">
+
+        <div class="navbar-wrap animated ">
+
+            <div class=" col-md-12 col-sm-6 col-xs-6 no-padding  ">
+                <ul id="navbar-list" class="nav navbar-nav navbar-nav-scroll navbar-text menu-effect">
+
+                    <li class="">
+                        <a class="effect " href="/">
+                            <span class="front">Accueil</span>
+                        </a>
+                    </li>
+
+                    <li class="effect dropdown hidden-sm hidden-xs">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="true">
+                            <span class="front nav-label">Extrait & Relevé</span> <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a href="/extrait-de-compte">Extrait de compte</a></li>
+                            <li><a href="/relevé-de-compte">Relevé de compte</a></li>
+
+                        </ul>
+                    </li>
+
+                    <li class="visible-sm visible-xs">
+                        <a class="effect " href="/extrait-de-compte">
+                            <span class="front">Extrait de compte</span>
+                        </a>
+                    </li>
+
+                    <li class="visible-sm visible-xs">
+                        <a class="effect " href="/relevé-de-compte">
+                            <span class="front">Relevé de compte</span>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a class="effect " href="/notification-sms">
+                            <span class="front">Notification SMS</span>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a class="effect " href="/commande-edahabia">
+                            <span class="front">Carte EDAHABIA</span>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a class="effect " href="/cheques">
+                            <span class="front">Carnet de chèques</span>
+                        </a>
+                    </li>
+
+                                        <li class="dropdown user hidden-xs hidden-sm">
+                        <a href="#" data-toggle="dropdown" class="dropdown-toggle user-action">
+                            <img src="/img/user.png" class="avatar" alt="Avatar">
+                            0023554373
+                            <b class="caret"></b>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a href="https://eccp.poste.dz/compte">Mes informations</a></li>
+                            <li><a href="https://eccp.poste.dz/compte/t%C3%A9l%C3%A9phone">Numéro de téléphone</a></li>
+                            <li><a href="https://eccp.poste.dz/compte/mot-de-passe">Mot de passe</a></li>
+                            <li><a href="https://eccp.poste.dz/compte/email">E-mail &nbsp;&nbsp;&nbsp;&nbsp; </a></li>
+                            <li><a href="https://eccp.poste.dz/compte/code-secret">Code RACIDI / 1530</a></li>
+                            <li><a href="https://eccp.poste.dz/compte/activit%C3%A9-de-connexion">Activité de connexion </a></li>
+
+                            <li>
+                                <a class="dropdown-item" href="https://eccp.poste.dz/logout" onclick="event.preventDefault(); $('#logout-form').submit();">
+                                    Se déconnecter                                </a>
+                            </li>
+
+                            <form id="logout-form" action="https://eccp.poste.dz/logout" method="POST" style="display: none;">
+                                <input type="hidden" name="_token" value="wcpnRuPWdAYbc3gpX83RFiYpuSzAFe24IvjmcxdF" autocomplete="off">                            </form>
+                        </ul>
+                    </li>
+
+                    <li class="visible-xs">
+                        <a class="effect " href="https://eccp.poste.dz/logout" onclick="event.preventDefault(); $('#logout-form').submit();">
+                            <span class="front"> Se déconnecter</span>
+                        </a>
+                    </li>
+
+                    
+                    <li class="item-lang">
+                                                <a href="/locale/ar"><img src="/img/ar.png" alt="ar" /></a>
+                                            </li>
+
+                </ul>
+            </div>
+
+                        <div class="col-md-12 col-sm-6 col-xs-6 no-padding visible-xs visible-sm text-right">
+                <ul id="navbar-list" class="nav navbar-nav navbar-nav-scroll navbar-text menu-effect">
+                    <li><a href="https://eccp.poste.dz/compte">Mes informations</a></li>
+                    <li><a href="https://eccp.poste.dz/compte/t%C3%A9l%C3%A9phone">Numéro de téléphone</a></li>
+                    <li><a href="https://eccp.poste.dz/compte/mot-de-passe">Mot de passe</a></li>
+                    <li><a href="https://eccp.poste.dz/compte/email">E-mail &nbsp;&nbsp;&nbsp;&nbsp; </a></li>
+                    <li><a href="https://eccp.poste.dz/compte/code-secret">Code RACIDI / 1530</a></li>
+                    <li><a href="https://eccp.poste.dz/compte/activit%C3%A9-de-connexion">Activité de connexion </a></li>
+                </ul>
+            </div>
+            
+        </div>
+    </div>
+    <!-- /.navbar-collapse -->
+</nav>        </div>
+    </header>
+
+    <div id="wrap" class="linearpage-layout">
+
+        <div class="services-wrap">
+
+            <div class="container">
+
+                                <div class="heading-section">
+                    <h2>Relevé de compte</h2>
+                    <p>
+</p>
+                </div>
+                
+                <div class="row ">
+
+                    
+<div class="col-md-12">
+
+    <div class="well">
+        <div class="row">
+            <div class="col-lg-4 col-xs-12"><strong> Compte :</strong></div>
+            <div class="col-lg-8 col-xs-12"> 23554373 </div>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-4 col-xs-12"> <span class="bold">Relevé du :</span> 01/04/2026 </div>
+            <div class="col-lg-8 col-xs-12"> Au : 11/07/2026 </div>
+        </div>
+
+        <div class="row">
+
+            <div class="col-lg-4 col-xs-12"><strong> Affiicher au format :</strong></div>
+
+            <div class="col-lg-8 col-xs-12">
+                <div class="">
+                    <a class="bold" href="https://eccp.poste.dz/relev%C3%A9-de-compte/excel?tk=Z3qq9zd9q9U8bgaD8LtmOsHYUHRpm-q3-FzBv2vKdyJFp8Q4o-VoUAPd_YEdbQCJBs7rJx-0QPLRRS-R6KTWNAASxzajx-rg8JT0ua4NMIVz2WrEkHbxQ_dVfb1-K0sY"><img src="/img/xls.jpg" border="0">Excel</a>
+                    &nbsp;&nbsp;
+                    <a class="bold" target="_blank" rel="noopener noreferrer" href="https://eccp.poste.dz/relev%C3%A9-de-compte/pdf?tk=Z3qq9zd9q9U8bgaD8LtmOsHYUHRpm-q3-FzBv2vKdyJFp8Q4o-VoUAPd_YEdbQCJBs7rJx-0QPLRRS-R6KTWNAASxzajx-rg8JT0ua4NMIVz2WrEkHbxQ_dVfb1-K0sY"><img src="/img/pdf.gif" border="0">PDF</a>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <br>
+
+    <div class="row hidden-xs" style="overflow-x:auto">
+
+        <div class="col-md-12">
+            <table id="results" class="table table-bordered table-striped text-center ltr" style="background:white; white-space: nowrap;">
+                <thead>
+                    <tr>
+                        <th>Date</th>
+                        <th>Code opération</th>
+                         <th>Détails</th>                             <th>Compte</th>
+                            <th>Montant</th>
+                            <th>Taxe</th>
+                            <th>Solde</th>
+                    </tr>
+                </thead>
+                <tbody>
+                                                            <tr>
+                        <td>09/04/2026</td>
+                        <td>223 DAB   </td>
+                         <td>RECHARGE - ALGÉRIE TÉLÉCOM</td>                             <td>381257</td>
+                            <td> <span class="bold danger"> -2 000,00</span></td>
+                            <td>0,00</td>
+                            <td> 131 595,67 </td>
+                    </tr>
+                                                            <tr>
+                        <td>10/04/2026</td>
+                        <td>205 TAXE  </td>
+                         <td>NOTIF SMS</td>                             <td>567</td>
+                            <td> <span class="bold danger"> -10,00</span></td>
+                            <td>0,00</td>
+                            <td> 131 585,67 </td>
+                    </tr>
+                                                            <tr>
+                        <td>16/04/2026</td>
+                        <td>223 DAB   </td>
+                         <td>RECHARGE - DJEZZY</td>                             <td>381236</td>
+                            <td> <span class="bold danger"> -1 500,00</span></td>
+                            <td>0,00</td>
+                            <td> 130 085,67 </td>
+                    </tr>
+                                                            <tr>
+                        <td>17/04/2026</td>
+                        <td>205 TAXE  </td>
+                         <td>NOTIF SMS</td>                             <td>567</td>
+                            <td> <span class="bold danger"> -10,00</span></td>
+                            <td>0,00</td>
+                            <td> 130 075,67 </td>
+                    </tr>
+                                                            <tr>
+                        <td>19/04/2026</td>
+                        <td>200 SPVIR </td>
+                         <td>VIREMENT</td>                             <td>24402284</td>
+                            <td> <span class="bold danger"> -28 000,00</span></td>
+                            <td>18,00</td>
+                            <td> 102 057,67 </td>
+                    </tr>
+                                                            <tr>
+                        <td>19/04/2026</td>
+                        <td>200 SPVIR </td>
+                         <td>VIREMENT</td>                             <td>23642051</td>
+                            <td> <span class="bold danger"> -30 000,00</span></td>
+                            <td>18,00</td>
+                            <td> 72 039,67 </td>
+                    </tr>
+                                                            <tr>
+                        <td>19/04/2026</td>
+                        <td>200 SPVIR </td>
+                         <td>VIREMENT</td>                             <td>28898166</td>
+                            <td> <span class="bold danger"> -50 000,00</span></td>
+                            <td>24,00</td>
+                            <td> 22 015,67 </td>
+                    </tr>
+                                                            <tr>
+                        <td>19/04/2026</td>
+                        <td>205 TAXE  </td>
+                         <td>NOTIF SMS</td>                             <td>567</td>
+                            <td> <span class="bold danger"> -10,00</span></td>
+                            <td>0,00</td>
+                            <td> 22 005,67 </td>
+                    </tr>
+                                                            <tr>
+                        <td>22/04/2026</td>
+                        <td>205 TAXE  </td>
+                         <td>NOTIF SMS</td>                             <td>567</td>
+                            <td> <span class="bold danger"> -10,00</span></td>
+                            <td>0,00</td>
+                            <td> 21 995,67 </td>
+                    </tr>
+                                                            <tr>
+                        <td>22/04/2026</td>
+                        <td>222 VURG  </td>
+                         <td>VIREMENT</td>                             <td>1</td>
+                            <td> <span class="bold danger"> -2 000,00</span></td>
+                            <td>0,00</td>
+                            <td> 19 995,67 </td>
+                    </tr>
+                                                            <tr>
+                        <td>22/04/2026</td>
+                        <td>223 DAB   </td>
+                         <td>PAIEMENT</td>                             <td>9999999906</td>
+                            <td> <span class="bold danger"> -96,00</span></td>
+                            <td>0,00</td>
+                            <td> 19 899,67 </td>
+                    </tr>
+                                                            <tr>
+                        <td>23/04/2026</td>
+                        <td>205 TAXE  </td>
+                         <td>NOTIF SMS</td>                             <td>567</td>
+                            <td> <span class="bold danger"> -10,00</span></td>
+                            <td>0,00</td>
+                            <td> 19 889,67 </td>
+                    </tr>
+                                                            <tr>
+                        <td>24/04/2026</td>
+                        <td>200 SPVIR </td>
+                         <td>VIREMENT</td>                             <td>13614004</td>
+                            <td> <span class="bold danger"> -2 000,00</span></td>
+                            <td>12,00</td>
+                            <td> 17 877,67 </td>
+                    </tr>
+                                                            <tr>
+                        <td>24/04/2026</td>
+                        <td>205 TAXE  </td>
+                         <td>NOTIF SMS</td>                             <td>567</td>
+                            <td> <span class="bold danger"> -10,00</span></td>
+                            <td>0,00</td>
+                            <td> 17 867,67 </td>
+                    </tr>
+                                                            <tr>
+                        <td>24/04/2026</td>
+                        <td>223 DAB   </td>
+                         <td>RECHARGE - DJEZZY</td>                             <td>381236</td>
+                            <td> <span class="bold danger"> -100,00</span></td>
+                            <td>0,00</td>
+                            <td> 17 767,67 </td>
+                    </tr>
+                                                            <tr>
+                        <td>30/04/2026</td>
+                        <td>200 SPVIR </td>
+                         <td>VIREMENT</td>                             <td>18589653</td>
+                            <td> <span class="bold danger"> -81 000,00</span></td>
+                            <td>36,00</td>
+                            <td> -63 268,33 </td>
+                    </tr>
+                                                            <tr>
+                        <td>30/04/2026</td>
+                        <td>260 SPVIR </td>
+                         <td>VIREMENT</td>                             <td>23691116</td>
+                            <td> <span class="bold success"> +4 000,00</span></td>
+                            <td>0,00</td>
+                            <td> 731,67 </td>
+                    </tr>
+                                                            <tr>
+                        <td>30/04/2026</td>
+                        <td>260 SPVIR </td>
+                         <td>VIREMENT</td>                             <td>8835111</td>
+                            <td> <span class="bold success"> +60 000,00</span></td>
+                            <td>0,00</td>
+                            <td> 731,67 </td>
+                    </tr>
+                                                            <tr>
+                        <td>01/05/2026</td>
+                        <td>205 TAXE  </td>
+                         <td>NOTIF SMS</td>                             <td>567</td>
+                            <td> <span class="bold danger"> -10,00</span></td>
+                            <td>0,00</td>
+                            <td> 721,67 </td>
+                    </tr>
+                                                            <tr>
+                        <td>02/05/2026</td>
+                        <td>200 SPVIR </td>
+                         <td>VIREMENT</td>                             <td>18589653</td>
+                            <td> <span class="bold danger"> -100 000,00</span></td>
+                            <td>39,00</td>
+                            <td> -99 317,33 </td>
+                    </tr>
+                                                            <tr>
+                        <td>02/05/2026</td>
+                        <td>260 SPVIR </td>
+                         <td>VIREMENT</td>                             <td>8835111</td>
+                            <td> <span class="bold success"> +120 000,00</span></td>
+                            <td>0,00</td>
+                            <td> 20 682,67 </td>
+                    </tr>
+                                                            <tr>
+                        <td>03/05/2026</td>
+                        <td>200 SPVIR </td>
+                         <td>VIREMENT</td>                             <td>43445535</td>
+                            <td> <span class="bold danger"> -11 000,00</span></td>
+                            <td>15,00</td>
+                            <td> 9 667,67 </td>
+                    </tr>
+                                                            <tr>
+                        <td>03/05/2026</td>
+                        <td>205 TAXE  </td>
+                         <td>NOTIF SMS</td>                             <td>567</td>
+                            <td> <span class="bold danger"> -10,00</span></td>
+                            <td>0,00</td>
+                            <td> 9 657,67 </td>
+                    </tr>
+                                                            <tr>
+                        <td>04/05/2026</td>
+                        <td>200 SPVIR </td>
+                         <td>VIREMENT</td>                             <td>23475791</td>
+                            <td> <span class="bold danger"> -39 000,00</span></td>
+                            <td>21,00</td>
+                            <td> -29 363,33 </td>
+                    </tr>
+                                                            <tr>
+                        <td>04/05/2026</td>
+                        <td>205 TAXE  </td>
+                         <td>NOTIF SMS</td>                             <td>567</td>
+                            <td> <span class="bold danger"> -10,00</span></td>
+                            <td>0,00</td>
+                            <td> -29 373,33 </td>
+                    </tr>
+                                                            <tr>
+                        <td>04/05/2026</td>
+                        <td>260 SPVIR </td>
+                         <td>VIREMENT</td>                             <td>6602757</td>
+                            <td> <span class="bold success"> +30 000,00</span></td>
+                            <td>0,00</td>
+                            <td> 626,67 </td>
+                    </tr>
+                                                            <tr>
+                        <td>05/05/2026</td>
+                        <td>205 TAXE  </td>
+                         <td>NOTIF SMS</td>                             <td>567</td>
+                            <td> <span class="bold danger"> -10,00</span></td>
+                            <td>0,00</td>
+                            <td> 616,67 </td>
+                    </tr>
+                                                            <tr>
+                        <td>06/05/2026</td>
+                        <td>260 SPVIR </td>
+                         <td>VIREMENT</td>                             <td>12494580</td>
+                            <td> <span class="bold success"> +50 000,00</span></td>
+                            <td>0,00</td>
+                            <td> 50 616,67 </td>
+                    </tr>
+                                                            <tr>
+                        <td>07/05/2026</td>
+                        <td>205 TAXE  </td>
+                         <td>NOTIF SMS</td>                             <td>567</td>
+                            <td> <span class="bold danger"> -10,00</span></td>
+                            <td>0,00</td>
+                            <td> 50 606,67 </td>
+                    </tr>
+                                                            <tr>
+                        <td>10/05/2026</td>
+                        <td>223 DAB   </td>
+                         <td>PAIEMENT</td>                             <td>9999999906</td>
+                            <td> <span class="bold danger"> -192,00</span></td>
+                            <td>0,00</td>
+                            <td> 50 414,67 </td>
+                    </tr>
+                                                            <tr>
+                        <td>11/05/2026</td>
+                        <td>200 SPVIR </td>
+                         <td>VIREMENT</td>                             <td>23837427</td>
+                            <td> <span class="bold danger"> -50 000,00</span></td>
+                            <td>24,00</td>
+                            <td> 390,67 </td>
+                    </tr>
+                                                            <tr>
+                        <td>11/05/2026</td>
+                        <td>200 SPVIR </td>
+                         <td>VIREMENT</td>                             <td>23837427</td>
+                            <td> <span class="bold danger"> -50 000,00</span></td>
+                            <td>24,00</td>
+                            <td> -49 633,33 </td>
+                    </tr>
+                                                            <tr>
+                        <td>11/05/2026</td>
+                        <td>057 VURG  </td>
+                         <td>VERSEMENT - BUREAU BATNA ROUTE DE TAZOULT</td>                             <td>314681</td>
+                            <td> <span class="bold success"> +150 000,00</span></td>
+                            <td>0,00</td>
+                            <td> 100 366,67 </td>
+                    </tr>
+                                                            <tr>
+                        <td>12/05/2026</td>
+                        <td>205 TAXE  </td>
+                         <td>NOTIF SMS</td>                             <td>567</td>
+                            <td> <span class="bold danger"> -10,00</span></td>
+                            <td>0,00</td>
+                            <td> 100 356,67 </td>
+                    </tr>
+                                                            <tr>
+                        <td>14/05/2026</td>
+                        <td>200 SPVIR </td>
+                         <td>VIREMENT</td>                             <td>41533035</td>
+                            <td> <span class="bold danger"> -30 000,00</span></td>
+                            <td>18,00</td>
+                            <td> 70 338,67 </td>
+                    </tr>
+                                                            <tr>
+                        <td>14/05/2026</td>
+                        <td>200 SPVIR </td>
+                         <td>VIREMENT</td>                             <td>19609226</td>
+                            <td> <span class="bold danger"> -70 000,00</span></td>
+                            <td>30,00</td>
+                            <td> 308,67 </td>
+                    </tr>
+                                                            <tr>
+                        <td>15/05/2026</td>
+                        <td>205 TAXE  </td>
+                         <td>NOTIF SMS</td>                             <td>567</td>
+                            <td> <span class="bold danger"> -10,00</span></td>
+                            <td>0,00</td>
+                            <td> 298,67 </td>
+                    </tr>
+                                                            <tr>
+                        <td>20/05/2026</td>
+                        <td>260 SPVIR </td>
+                         <td>VIREMENT</td>                             <td>24753705</td>
+                            <td> <span class="bold success"> +36 000,00</span></td>
+                            <td>0,00</td>
+                            <td> 36 298,67 </td>
+                    </tr>
+                                                            <tr>
+                        <td>21/05/2026</td>
+                        <td>200 SPVIR </td>
+                         <td>VIREMENT</td>                             <td>6602757</td>
+                            <td> <span class="bold danger"> -30 000,00</span></td>
+                            <td>18,00</td>
+                            <td> 6 280,67 </td>
+                    </tr>
+                                                            <tr>
+                        <td>21/05/2026</td>
+                        <td>205 TAXE  </td>
+                         <td>NOTIF SMS</td>                             <td>567</td>
+                            <td> <span class="bold danger"> -10,00</span></td>
+                            <td>0,00</td>
+                            <td> 6 270,67 </td>
+                    </tr>
+                                                            <tr>
+                        <td>22/05/2026</td>
+                        <td>205 TAXE  </td>
+                         <td>NOTIF SMS</td>                             <td>567</td>
+                            <td> <span class="bold danger"> -10,00</span></td>
+                            <td>0,00</td>
+                            <td> 6 260,67 </td>
+                    </tr>
+                                                            <tr>
+                        <td>29/05/2026</td>
+                        <td>260 SPVIR </td>
+                         <td>VIREMENT</td>                             <td>12494580</td>
+                            <td> <span class="bold success"> +45 000,00</span></td>
+                            <td>0,00</td>
+                            <td> 51 260,67 </td>
+                    </tr>
+                                                            <tr>
+                        <td>30/05/2026</td>
+                        <td>205 TAXE  </td>
+                         <td>NOTIF SMS</td>                             <td>567</td>
+                            <td> <span class="bold danger"> -10,00</span></td>
+                            <td>0,00</td>
+                            <td> 51 250,67 </td>
+                    </tr>
+                                                            <tr>
+                        <td>30/05/2026</td>
+                        <td>260 SPVIR </td>
+                         <td>VIREMENT</td>                             <td>29268926</td>
+                            <td> <span class="bold success"> +38 000,00</span></td>
+                            <td>0,00</td>
+                            <td> 89 250,67 </td>
+                    </tr>
+                                                            <tr>
+                        <td>31/05/2026</td>
+                        <td>200 SPVIR </td>
+                         <td>VIREMENT</td>                             <td>28501992</td>
+                            <td> <span class="bold danger"> -3 000,00</span></td>
+                            <td>12,00</td>
+                            <td> 86 238,67 </td>
+                    </tr>
+                                                            <tr>
+                        <td>31/05/2026</td>
+                        <td>205 TAXE  </td>
+                         <td>NOTIF SMS</td>                             <td>567</td>
+                            <td> <span class="bold danger"> -10,00</span></td>
+                            <td>0,00</td>
+                            <td> 86 228,67 </td>
+                    </tr>
+                                                            <tr>
+                        <td>31/05/2026</td>
+                        <td>260 SPVIR </td>
+                         <td>VIREMENT</td>                             <td>23775470</td>
+                            <td> <span class="bold success"> +5 000,00</span></td>
+                            <td>0,00</td>
+                            <td> 91 228,67 </td>
+                    </tr>
+                                                            <tr>
+                        <td>01/06/2026</td>
+                        <td>205 TAXE  </td>
+                         <td>NOTIF SMS</td>                             <td>567</td>
+                            <td> <span class="bold danger"> -10,00</span></td>
+                            <td>0,00</td>
+                            <td> 91 218,67 </td>
+                    </tr>
+                                                            <tr>
+                        <td>02/06/2026</td>
+                        <td>200 SPVIR </td>
+                         <td>VIREMENT</td>                             <td>6602757</td>
+                            <td> <span class="bold danger"> -5 000,00</span></td>
+                            <td>12,00</td>
+                            <td> 86 206,67 </td>
+                    </tr>
+                                                            <tr>
+                        <td>03/06/2026</td>
+                        <td>200 SPVIR </td>
+                         <td>VIREMENT</td>                             <td>43863975</td>
+                            <td> <span class="bold danger"> -3 000,00</span></td>
+                            <td>12,00</td>
+                            <td> 83 194,67 </td>
+                    </tr>
+                                                            <tr>
+                        <td>03/06/2026</td>
+                        <td>200 SPVIR </td>
+                         <td>VIREMENT</td>                             <td>28501992</td>
+                            <td> <span class="bold danger"> -4 000,00</span></td>
+                            <td>12,00</td>
+                            <td> 79 182,67 </td>
+                    </tr>
+                                                            <tr>
+                        <td>03/06/2026</td>
+                        <td>200 SPVIR </td>
+                         <td>VIREMENT</td>                             <td>28501992</td>
+                            <td> <span class="bold danger"> -20 000,00</span></td>
+                            <td>15,00</td>
+                            <td> 59 167,67 </td>
+                    </tr>
+                                                            <tr>
+                        <td>03/06/2026</td>
+                        <td>205 TAXE  </td>
+                         <td>NOTIF SMS</td>                             <td>567</td>
+                            <td> <span class="bold danger"> -10,00</span></td>
+                            <td>0,00</td>
+                            <td> 59 157,67 </td>
+                    </tr>
+                                                            <tr>
+                        <td>04/06/2026</td>
+                        <td>205 TAXE  </td>
+                         <td>NOTIF SMS</td>                             <td>567</td>
+                            <td> <span class="bold danger"> -10,00</span></td>
+                            <td>0,00</td>
+                            <td> 59 147,67 </td>
+                    </tr>
+                                                            <tr>
+                        <td>05/06/2026</td>
+                        <td>223 DAB   </td>
+                         <td>PAIEMENT</td>                             <td>9999999906</td>
+                            <td> <span class="bold danger"> -480,00</span></td>
+                            <td>0,00</td>
+                            <td> 58 667,67 </td>
+                    </tr>
+                                                            <tr>
+                        <td>05/06/2026</td>
+                        <td>284 DAB   </td>
+                         <td>-</td>                             <td>1</td>
+                            <td> <span class="bold success"> +480,00</span></td>
+                            <td>0,00</td>
+                            <td> 59 147,67 </td>
+                    </tr>
+                                                            <tr>
+                        <td>06/06/2026</td>
+                        <td>200 SPVIR </td>
+                         <td>VIREMENT</td>                             <td>6602757</td>
+                            <td> <span class="bold danger"> -22 000,00</span></td>
+                            <td>18,00</td>
+                            <td> 37 129,67 </td>
+                    </tr>
+                                                            <tr>
+                        <td>07/06/2026</td>
+                        <td>200 SPVIR </td>
+                         <td>VIREMENT</td>                             <td>43579861</td>
+                            <td> <span class="bold danger"> -3 500,00</span></td>
+                            <td>12,00</td>
+                            <td> 33 617,67 </td>
+                    </tr>
+                                                            <tr>
+                        <td>07/06/2026</td>
+                        <td>205 TAXE  </td>
+                         <td>NOTIF SMS</td>                             <td>567</td>
+                            <td> <span class="bold danger"> -10,00</span></td>
+                            <td>0,00</td>
+                            <td> 33 607,67 </td>
+                    </tr>
+                                                            <tr>
+                        <td>08/06/2026</td>
+                        <td>205 TAXE  </td>
+                         <td>NOTIF SMS</td>                             <td>567</td>
+                            <td> <span class="bold danger"> -10,00</span></td>
+                            <td>0,00</td>
+                            <td> 33 597,67 </td>
+                    </tr>
+                                                            <tr>
+                        <td>09/06/2026</td>
+                        <td>200 SPVIR </td>
+                         <td>VIREMENT</td>                             <td>28501992</td>
+                            <td> <span class="bold danger"> -16 500,00</span></td>
+                            <td>15,00</td>
+                            <td> 17 082,67 </td>
+                    </tr>
+                                                            <tr>
+                        <td>09/06/2026</td>
+                        <td>260 SPVIR </td>
+                         <td>VIREMENT</td>                             <td>17450949</td>
+                            <td> <span class="bold success"> +20 000,00</span></td>
+                            <td>0,00</td>
+                            <td> 37 082,67 </td>
+                    </tr>
+                                                            <tr>
+                        <td>10/06/2026</td>
+                        <td>200 SPVIR </td>
+                         <td>VIREMENT</td>                             <td>28238416</td>
+                            <td> <span class="bold danger"> -28 000,00</span></td>
+                            <td>18,00</td>
+                            <td> 9 064,67 </td>
+                    </tr>
+                                                            <tr>
+                        <td>10/06/2026</td>
+                        <td>205 TAXE  </td>
+                         <td>NOTIF SMS</td>                             <td>567</td>
+                            <td> <span class="bold danger"> -10,00</span></td>
+                            <td>0,00</td>
+                            <td> 9 054,67 </td>
+                    </tr>
+                                                            <tr>
+                        <td>10/06/2026</td>
+                        <td>223 DAB   </td>
+                         <td>PAIEMENT</td>                             <td>9999999906</td>
+                            <td> <span class="bold danger"> -288,00</span></td>
+                            <td>0,00</td>
+                            <td> 8 766,67 </td>
+                    </tr>
+                                                            <tr>
+                        <td>10/06/2026</td>
+                        <td>284 DAB   </td>
+                         <td>-</td>                             <td>1</td>
+                            <td> <span class="bold success"> +288,00</span></td>
+                            <td>0,00</td>
+                            <td> 9 054,67 </td>
+                    </tr>
+                                                            <tr>
+                        <td>11/06/2026</td>
+                        <td>200 SPVIR </td>
+                         <td>VIREMENT</td>                             <td>22664169</td>
+                            <td> <span class="bold danger"> -9 000,00</span></td>
+                            <td>12,00</td>
+                            <td> 42,67 </td>
+                    </tr>
+                                                            <tr>
+                        <td>11/06/2026</td>
+                        <td>200 SPVIR </td>
+                         <td>VIREMENT</td>                             <td>5052827</td>
+                            <td> <span class="bold danger"> -12 000,00</span></td>
+                            <td>15,00</td>
+                            <td> -11 972,33 </td>
+                    </tr>
+                                                            <tr>
+                        <td>11/06/2026</td>
+                        <td>205 TAXE  </td>
+                         <td>NOTIF SMS</td>                             <td>567</td>
+                            <td> <span class="bold danger"> -10,00</span></td>
+                            <td>0,00</td>
+                            <td> -11 982,33 </td>
+                    </tr>
+                                                            <tr>
+                        <td>11/06/2026</td>
+                        <td>260 SPVIR </td>
+                         <td>VIREMENT</td>                             <td>25935733</td>
+                            <td> <span class="bold success"> +10 000,00</span></td>
+                            <td>0,00</td>
+                            <td> 98 017,67 </td>
+                    </tr>
+                                                            <tr>
+                        <td>11/06/2026</td>
+                        <td>260 SPVIR </td>
+                         <td>VIREMENT</td>                             <td>8835111</td>
+                            <td> <span class="bold success"> +100 000,00</span></td>
+                            <td>0,00</td>
+                            <td> 98 017,67 </td>
+                    </tr>
+                                                            <tr>
+                        <td>12/06/2026</td>
+                        <td>205 TAXE  </td>
+                         <td>NOTIF SMS</td>                             <td>567</td>
+                            <td> <span class="bold danger"> -10,00</span></td>
+                            <td>0,00</td>
+                            <td> 98 007,67 </td>
+                    </tr>
+                                                            <tr>
+                        <td>14/06/2026</td>
+                        <td>200 SPVIR </td>
+                         <td>VIREMENT</td>                             <td>19561427</td>
+                            <td> <span class="bold danger"> -4 000,00</span></td>
+                            <td>12,00</td>
+                            <td> 93 995,67 </td>
+                    </tr>
+                                                            <tr>
+                        <td>14/06/2026</td>
+                        <td>260 SPVIR </td>
+                         <td>VIREMENT</td>                             <td>17450949</td>
+                            <td> <span class="bold success"> +5 000,00</span></td>
+                            <td>0,00</td>
+                            <td> 98 995,67 </td>
+                    </tr>
+                                                            <tr>
+                        <td>15/06/2026</td>
+                        <td>205 TAXE  </td>
+                         <td>NOTIF SMS</td>                             <td>567</td>
+                            <td> <span class="bold danger"> -10,00</span></td>
+                            <td>0,00</td>
+                            <td> 98 985,67 </td>
+                    </tr>
+                                                            <tr>
+                        <td>16/06/2026</td>
+                        <td>200 SPVIR </td>
+                         <td>VIREMENT</td>                             <td>42659196</td>
+                            <td> <span class="bold danger"> -6 000,00</span></td>
+                            <td>12,00</td>
+                            <td> 92 973,67 </td>
+                    </tr>
+                                                            <tr>
+                        <td>16/06/2026</td>
+                        <td>260 SPVIR </td>
+                         <td>VIREMENT</td>                             <td>17450949</td>
+                            <td> <span class="bold success"> +7 000,00</span></td>
+                            <td>0,00</td>
+                            <td> 99 973,67 </td>
+                    </tr>
+                                                            <tr>
+                        <td>17/06/2026</td>
+                        <td>205 TAXE  </td>
+                         <td>NOTIF SMS</td>                             <td>567</td>
+                            <td> <span class="bold danger"> -10,00</span></td>
+                            <td>0,00</td>
+                            <td> 99 963,67 </td>
+                    </tr>
+                                                            <tr>
+                        <td>17/06/2026</td>
+                        <td>223 DAB   </td>
+                         <td>RETRAIT GAB BANQUE</td>                             <td>9999999906</td>
+                            <td> <span class="bold danger"> -10 000,00</span></td>
+                            <td>35,00</td>
+                            <td> 89 928,67 </td>
+                    </tr>
+                                                            <tr>
+                        <td>19/06/2026</td>
+                        <td>200 SPVIR </td>
+                         <td>VIREMENT</td>                             <td>44608851</td>
+                            <td> <span class="bold danger"> -10 000,00</span></td>
+                            <td>12,00</td>
+                            <td> 79 916,67 </td>
+                    </tr>
+                                                            <tr>
+                        <td>19/06/2026</td>
+                        <td>200 SPVIR </td>
+                         <td>VIREMENT</td>                             <td>26156443</td>
+                            <td> <span class="bold danger"> -20 000,00</span></td>
+                            <td>15,00</td>
+                            <td> 59 901,67 </td>
+                    </tr>
+                                                            <tr>
+                        <td>19/06/2026</td>
+                        <td>205 TAXE  </td>
+                         <td>NOTIF SMS</td>                             <td>567</td>
+                            <td> <span class="bold danger"> -10,00</span></td>
+                            <td>0,00</td>
+                            <td> 59 891,67 </td>
+                    </tr>
+                                                            <tr>
+                        <td>19/06/2026</td>
+                        <td>260 SPVIR </td>
+                         <td>VIREMENT</td>                             <td>44410837</td>
+                            <td> <span class="bold success"> +2 000,00</span></td>
+                            <td>0,00</td>
+                            <td> 142 891,67 </td>
+                    </tr>
+                                                            <tr>
+                        <td>19/06/2026</td>
+                        <td>260 SPVIR </td>
+                         <td>VIREMENT</td>                             <td>44150579</td>
+                            <td> <span class="bold success"> +11 000,00</span></td>
+                            <td>0,00</td>
+                            <td> 142 891,67 </td>
+                    </tr>
+                                                            <tr>
+                        <td>19/06/2026</td>
+                        <td>260 SPVIR </td>
+                         <td>VIREMENT</td>                             <td>14846035</td>
+                            <td> <span class="bold success"> +20 000,00</span></td>
+                            <td>0,00</td>
+                            <td> 142 891,67 </td>
+                    </tr>
+                                                            <tr>
+                        <td>19/06/2026</td>
+                        <td>260 SPVIR </td>
+                         <td>VIREMENT</td>                             <td>43831404</td>
+                            <td> <span class="bold success"> +20 000,00</span></td>
+                            <td>0,00</td>
+                            <td> 142 891,67 </td>
+                    </tr>
+                                                            <tr>
+                        <td>19/06/2026</td>
+                        <td>260 SPVIR </td>
+                         <td>VIREMENT</td>                             <td>6602757</td>
+                            <td> <span class="bold success"> +30 000,00</span></td>
+                            <td>0,00</td>
+                            <td> 142 891,67 </td>
+                    </tr>
+                                                            <tr>
+                        <td>20/06/2026</td>
+                        <td>205 TAXE  </td>
+                         <td>NOTIF SMS</td>                             <td>567</td>
+                            <td> <span class="bold danger"> -10,00</span></td>
+                            <td>0,00</td>
+                            <td> 142 881,67 </td>
+                    </tr>
+                                                            <tr>
+                        <td>20/06/2026</td>
+                        <td>223 DAB   </td>
+                         <td>PAIEMENT INTERNET - DJEZZY</td>                             <td>381236</td>
+                            <td> <span class="bold danger"> -1 200,00</span></td>
+                            <td>0,00</td>
+                            <td> 99 646,67 </td>
+                    </tr>
+                                                            <tr>
+                        <td>20/06/2026</td>
+                        <td>223 DAB   </td>
+                         <td>RETRAIT GAB BANQUE</td>                             <td>9999999906</td>
+                            <td> <span class="bold danger"> -42 000,00</span></td>
+                            <td>35,00</td>
+                            <td> 99 646,67 </td>
+                    </tr>
+                                                            <tr>
+                        <td>21/06/2026</td>
+                        <td>200 SPVIR </td>
+                         <td>VIREMENT</td>                             <td>27963356</td>
+                            <td> <span class="bold danger"> -600,00</span></td>
+                            <td>12,00</td>
+                            <td> 99 034,67 </td>
+                    </tr>
+                                                            <tr>
+                        <td>21/06/2026</td>
+                        <td>205 TAXE  </td>
+                         <td>NOTIF SMS</td>                             <td>567</td>
+                            <td> <span class="bold danger"> -10,00</span></td>
+                            <td>0,00</td>
+                            <td> 99 024,67 </td>
+                    </tr>
+                                                            <tr>
+                        <td>25/06/2026</td>
+                        <td>205 TAXE  </td>
+                         <td>NOTIF SMS</td>                             <td>567</td>
+                            <td> <span class="bold danger"> -10,00</span></td>
+                            <td>0,00</td>
+                            <td> 99 014,67 </td>
+                    </tr>
+                                                            <tr>
+                        <td>25/06/2026</td>
+                        <td>223 DAB   </td>
+                         <td>RECHARGE - OOREDOO</td>                             <td>334902</td>
+                            <td> <span class="bold danger"> -1 000,00</span></td>
+                            <td>0,00</td>
+                            <td> 98 014,67 </td>
+                    </tr>
+                                                            <tr>
+                        <td>28/06/2026</td>
+                        <td>200 SPVIR </td>
+                         <td>VIREMENT</td>                             <td>8835111</td>
+                            <td> <span class="bold danger"> -10 000,00</span></td>
+                            <td>12,00</td>
+                            <td> 88 002,67 </td>
+                    </tr>
+                                                            <tr>
+                        <td>29/06/2026</td>
+                        <td>200 SPVIR </td>
+                         <td>VIREMENT</td>                             <td>17669926</td>
+                            <td> <span class="bold danger"> -28 000,00</span></td>
+                            <td>18,00</td>
+                            <td> 59 984,67 </td>
+                    </tr>
+                                                            <tr>
+                        <td>29/06/2026</td>
+                        <td>205 TAXE  </td>
+                         <td>NOTIF SMS</td>                             <td>567</td>
+                            <td> <span class="bold danger"> -10,00</span></td>
+                            <td>0,00</td>
+                            <td> 59 974,67 </td>
+                    </tr>
+                                                            <tr>
+                        <td>30/06/2026</td>
+                        <td>205 TAXE  </td>
+                         <td>NOTIF SMS</td>                             <td>567</td>
+                            <td> <span class="bold danger"> -10,00</span></td>
+                            <td>0,00</td>
+                            <td> 59 964,67 </td>
+                    </tr>
+                                                            <tr>
+                        <td>01/07/2026</td>
+                        <td>205 TAXE  </td>
+                         <td>NOTIF SMS</td>                             <td>567</td>
+                            <td> <span class="bold danger"> -10,00</span></td>
+                            <td>0,00</td>
+                            <td> 59 954,67 </td>
+                    </tr>
+                                                            <tr>
+                        <td>06/07/2026</td>
+                        <td>223 DAB   </td>
+                         <td>RECHARGE - MOBILIS</td>                             <td>380693</td>
+                            <td> <span class="bold danger"> -100,00</span></td>
+                            <td>0,00</td>
+                            <td> 59 854,67 </td>
+                    </tr>
+                                                            <tr>
+                        <td>09/07/2026</td>
+                        <td>200 SPVIR </td>
+                         <td>VIREMENT</td>                             <td>28501992</td>
+                            <td> <span class="bold danger"> -2 000,00</span></td>
+                            <td>12,00</td>
+                            <td> 57 842,67 </td>
+                    </tr>
+                                                            <tr>
+                        <td>09/07/2026</td>
+                        <td>200 SPVIR </td>
+                         <td>VIREMENT</td>                             <td>28983941</td>
+                            <td> <span class="bold danger"> -30 000,00</span></td>
+                            <td>18,00</td>
+                            <td> 27 824,67 </td>
+                    </tr>
+                                                            <tr>
+                        <td>09/07/2026</td>
+                        <td>205 TAXE  </td>
+                         <td>EXTRAIT INTERNET</td>                             <td>1515</td>
+                            <td> <span class="bold danger"> -10,00</span></td>
+                            <td>0,00</td>
+                            <td> 27 814,67 </td>
+                    </tr>
+                                                            <tr>
+                        <td>10/07/2026</td>
+                        <td>205 TAXE  </td>
+                         <td>RELEVÉ INTERNET</td>                             <td>1515</td>
+                            <td> <span class="bold danger"> -165,00</span></td>
+                            <td>0,00</td>
+                            <td> 27 649,67 </td>
+                    </tr>
+                                                            <tr>
+                        <td>10/07/2026</td>
+                        <td>223 DAB   </td>
+                         <td>RECHARGE - DJEZZY</td>                             <td>381236</td>
+                            <td> <span class="bold danger"> -100,00</span></td>
+                            <td>0,00</td>
+                            <td> 27 549,67 </td>
+                    </tr>
+                                                            <tr>
+                        <td>11/07/2026</td>
+                        <td>205 TAXE   </td>
+                         <td>RELEVÉ INTERNET</td>                             <td>1515</td>
+                            <td> <span class="bold danger"> -285,00</span></td>
+                            <td>0,00</td>
+                            <td> 27 264,67 </td>
+                    </tr>
+                    
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="row visible-xs">
+        <div class="col-xs-12">
+
+            <hr>
+            
+            <p><b>09/04/2026 : </b></p>
+
+                        <div class="well well-xs">
+                <div class="row">
+                    <div class="col-xs-12">
+                                                <div class="row col-md-12">
+                            <p>
+                                <b class="danger"> <span class="ltr">-2 000,00 </span> &nbsp; DA </b>
+                                <span class="pull-end">Taxe : <span class="ltr">0,00</span> </span>
+                            </p>
+                        </div>
+
+                        <div class="row col-md-12">
+                            <p>223 DAB  
+                                <span class="pull-end">Compte : 381257</span>
+                            </p>
+                        </div>
+
+                                                    <div class="row col-md-12">
+                                <p>RECHARGE - ALGÉRIE TÉLÉCOM</p>
+                            </div>
+                            
+                            <div class="row col-md-12">
+                                <h6><b>Solde : <span class="ltr"> 131 595,67 </span> &nbsp; DA</b></h6>                            </div>
+                    </div>
+                </div>
+            </div>
+            
+            <hr>
+
+            
+            <p><b>10/04/2026 : </b></p>
+
+                        <div class="well well-xs">
+                <div class="row">
+                    <div class="col-xs-12">
+                                                <div class="row col-md-12">
+                            <p>
+                                <b class="danger"> <span class="ltr">-10,00 </span> &nbsp; DA </b>
+                                <span class="pull-end">Taxe : <span class="ltr">0,00</span> </span>
+                            </p>
+                        </div>
+
+                        <div class="row col-md-12">
+                            <p>205 TAXE 
+                                <span class="pull-end">Compte : 567</span>
+                            </p>
+                        </div>
+
+                                                    <div class="row col-md-12">
+                                <p>NOTIF SMS</p>
+                            </div>
+                            
+                            <div class="row col-md-12">
+                                <h6><b>Solde : <span class="ltr"> 131 585,67 </span> &nbsp; DA</b></h6>                            </div>
+                    </div>
+                </div>
+            </div>
+            
+            <hr>
+
+            
+            <p><b>16/04/2026 : </b></p>
+
+                        <div class="well well-xs">
+                <div class="row">
+                    <div class="col-xs-12">
+                                                <div class="row col-md-12">
+                            <p>
+                                <b class="danger"> <span class="ltr">-1 500,00 </span> &nbsp; DA </b>
+                                <span class="pull-end">Taxe : <span class="ltr">0,00</span> </span>
+                            </p>
+                        </div>
+
+                        <div class="row col-md-12">
+                            <p>223 DAB  
+                                <span class="pull-end">Compte : 381236</span>
+                            </p>
+                        </div>
+
+                                                    <div class="row col-md-12">
+                                <p>RECHARGE - DJEZZY</p>
+                            </div>
+                            
+                            <div class="row col-md-12">
+                                <h6><b>Solde : <span class="ltr"> 130 085,67 </span> &nbsp; DA</b></h6>                            </div>
+                    </div>
+                </div>
+            </div>
+            
+            <hr>
+
+            
+            <p><b>17/04/2026 : </b></p>
+
+                        <div class="well well-xs">
+                <div class="row">
+                    <div class="col-xs-12">
+                                                <div class="row col-md-12">
+                            <p>
+                                <b class="danger"> <span class="ltr">-10,00 </span> &nbsp; DA </b>
+                                <span class="pull-end">Taxe : <span class="ltr">0,00</span> </span>
+                            </p>
+                        </div>
+
+                        <div class="row col-md-12">
+                            <p>205 TAXE 
+                                <span class="pull-end">Compte : 567</span>
+                            </p>
+                        </div>
+
+                                                    <div class="row col-md-12">
+                                <p>NOTIF SMS</p>
+                            </div>
+                            
+                            <div class="row col-md-12">
+                                <h6><b>Solde : <span class="ltr"> 130 075,67 </span> &nbsp; DA</b></h6>                            </div>
+                    </div>
+                </div>
+            </div>
+            
+            <hr>
+
+            
+            <p><b>19/04/2026 : </b></p>
+
+                        <div class="well well-xs">
+                <div class="row">
+                    <div class="col-xs-12">
+                                                <div class="row col-md-12">
+                            <p>
+                                <b class="danger"> <span class="ltr">-28 000,00 </span> &nbsp; DA </b>
+                                <span class="pull-end">Taxe : <span class="ltr">18,00</span> </span>
+                            </p>
+                        </div>
+
+                        <div class="row col-md-12">
+                            <p>200 SPVIR
+                                <span class="pull-end">Compte : 24402284</span>
+                            </p>
+                        </div>
+
+                                                    <div class="row col-md-12">
+                                <p>VIREMENT</p>
+                            </div>
+                            
+                            <div class="row col-md-12">
+                                <h6><b>Solde : <span class="ltr"> 102 057,67 </span> &nbsp; DA</b></h6>                            </div>
+                    </div>
+                </div>
+            </div>
+                        <div class="well well-xs">
+                <div class="row">
+                    <div class="col-xs-12">
+                                                <div class="row col-md-12">
+                            <p>
+                                <b class="danger"> <span class="ltr">-30 000,00 </span> &nbsp; DA </b>
+                                <span class="pull-end">Taxe : <span class="ltr">18,00</span> </span>
+                            </p>
+                        </div>
+
+                        <div class="row col-md-12">
+                            <p>200 SPVIR
+                                <span class="pull-end">Compte : 23642051</span>
+                            </p>
+                        </div>
+
+                                                    <div class="row col-md-12">
+                                <p>VIREMENT</p>
+                            </div>
+                            
+                            <div class="row col-md-12">
+                                <h6><b>Solde : <span class="ltr"> 72 039,67 </span> &nbsp; DA</b></h6>                            </div>
+                    </div>
+                </div>
+            </div>
+                        <div class="well well-xs">
+                <div class="row">
+                    <div class="col-xs-12">
+                                                <div class="row col-md-12">
+                            <p>
+                                <b class="danger"> <span class="ltr">-50 000,00 </span> &nbsp; DA </b>
+                                <span class="pull-end">Taxe : <span class="ltr">24,00</span> </span>
+                            </p>
+                        </div>
+
+                        <div class="row col-md-12">
+                            <p>200 SPVIR
+                                <span class="pull-end">Compte : 28898166</span>
+                            </p>
+                        </div>
+
+                                                    <div class="row col-md-12">
+                                <p>VIREMENT</p>
+                            </div>
+                            
+                            <div class="row col-md-12">
+                                <h6><b>Solde : <span class="ltr"> 22 015,67 </span> &nbsp; DA</b></h6>                            </div>
+                    </div>
+                </div>
+            </div>
+                        <div class="well well-xs">
+                <div class="row">
+                    <div class="col-xs-12">
+                                                <div class="row col-md-12">
+                            <p>
+                                <b class="danger"> <span class="ltr">-10,00 </span> &nbsp; DA </b>
+                                <span class="pull-end">Taxe : <span class="ltr">0,00</span> </span>
+                            </p>
+                        </div>
+
+                        <div class="row col-md-12">
+                            <p>205 TAXE 
+                                <span class="pull-end">Compte : 567</span>
+                            </p>
+                        </div>
+
+                                                    <div class="row col-md-12">
+                                <p>NOTIF SMS</p>
+                            </div>
+                            
+                            <div class="row col-md-12">
+                                <h6><b>Solde : <span class="ltr"> 22 005,67 </span> &nbsp; DA</b></h6>                            </div>
+                    </div>
+                </div>
+            </div>
+            
+            <hr>
+
+            
+            <p><b>22/04/2026 : </b></p>
+
+                        <div class="well well-xs">
+                <div class="row">
+                    <div class="col-xs-12">
+                                                <div class="row col-md-12">
+                            <p>
+                                <b class="danger"> <span class="ltr">-10,00 </span> &nbsp; DA </b>
+                                <span class="pull-end">Taxe : <span class="ltr">0,00</span> </span>
+                            </p>
+                        </div>
+
+                        <div class="row col-md-12">
+                            <p>205 TAXE 
+                                <span class="pull-end">Compte : 567</span>
+                            </p>
+                        </div>
+
+                                                    <div class="row col-md-12">
+                                <p>NOTIF SMS</p>
+                            </div>
+                            
+                            <div class="row col-md-12">
+                                <h6><b>Solde : <span class="ltr"> 21 995,67 </span> &nbsp; DA</b></h6>                            </div>
+                    </div>
+                </div>
+            </div>
+                        <div class="well well-xs">
+                <div class="row">
+                    <div class="col-xs-12">
+                                                <div class="row col-md-12">
+                            <p>
+                                <b class="danger"> <span class="ltr">-2 000,00 </span> &nbsp; DA </b>
+                                <span class="pull-end">Taxe : <span class="ltr">0,00</span> </span>
+                            </p>
+                        </div>
+
+                        <div class="row col-md-12">
+                            <p>222 VURG 
+                                <span class="pull-end">Compte : 1</span>
+                            </p>
+                        </div>
+
+                                                    <div class="row col-md-12">
+                                <p>VIREMENT</p>
+                            </div>
+                            
+                            <div class="row col-md-12">
+                                <h6><b>Solde : <span class="ltr"> 19 995,67 </span> &nbsp; DA</b></h6>                            </div>
+                    </div>
+                </div>
+            </div>
+                        <div class="well well-xs">
+                <div class="row">
+                    <div class="col-xs-12">
+                                                <div class="row col-md-12">
+                            <p>
+                                <b class="danger"> <span class="ltr">-96,00 </span> &nbsp; DA </b>
+                                <span class="pull-end">Taxe : <span class="ltr">0,00</span> </span>
+                            </p>
+                        </div>
+
+                        <div class="row col-md-12">
+                            <p>223 DAB  
+                                <span class="pull-end">Compte : 9999999906</span>
+                            </p>
+                        </div>
+
+                                                    <div class="row col-md-12">
+                                <p>PAIEMENT</p>
+                            </div>
+                            
+                            <div class="row col-md-12">
+                                <h6><b>Solde : <span class="ltr"> 19 899,67 </span> &nbsp; DA</b></h6>                            </div>
+                    </div>
+                </div>
+            </div>
+            
+            <hr>
+
+            
+            <p><b>23/04/2026 : </b></p>
+
+                        <div class="well well-xs">
+                <div class="row">
+                    <div class="col-xs-12">
+                                                <div class="row col-md-12">
+                            <p>
+                                <b class="danger"> <span class="ltr">-10,00 </span> &nbsp; DA </b>
+                                <span class="pull-end">Taxe : <span class="ltr">0,00</span> </span>
+                            </p>
+                        </div>
+
+                        <div class="row col-md-12">
+                            <p>205 TAXE 
+                                <span class="pull-end">Compte : 567</span>
+                            </p>
+                        </div>
+
+                                                    <div class="row col-md-12">
+                                <p>NOTIF SMS</p>
+                            </div>
+                            
+                            <div class="row col-md-12">
+                                <h6><b>Solde : <span class="ltr"> 19 889,67 </span> &nbsp; DA</b></h6>                            </div>
+                    </div>
+                </div>
+            </div>
+            
+            <hr>
+
+            
+            <p><b>24/04/2026 : </b></p>
+
+                        <div class="well well-xs">
+                <div class="row">
+                    <div class="col-xs-12">
+                                                <div class="row col-md-12">
+                            <p>
+                                <b class="danger"> <span class="ltr">-2 000,00 </span> &nbsp; DA </b>
+                                <span class="pull-end">Taxe : <span class="ltr">12,00</span> </span>
+                            </p>
+                        </div>
+
+                        <div class="row col-md-12">
+                            <p>200 SPVIR
+                                <span class="pull-end">Compte : 13614004</span>
+                            </p>
+                        </div>
+
+                                                    <div class="row col-md-12">
+                                <p>VIREMENT</p>
+                            </div>
+                            
+                            <div class="row col-md-12">
+                                <h6><b>Solde : <span class="ltr"> 17 877,67 </span> &nbsp; DA</b></h6>                            </div>
+                    </div>
+                </div>
+            </div>
+                        <div class="well well-xs">
+                <div class="row">
+                    <div class="col-xs-12">
+                                                <div class="row col-md-12">
+                            <p>
+                                <b class="danger"> <span class="ltr">-10,00 </span> &nbsp; DA </b>
+                                <span class="pull-end">Taxe : <span class="ltr">0,00</span> </span>
+                            </p>
+                        </div>
+
+                        <div class="row col-md-12">
+                            <p>205 TAXE 
+                                <span class="pull-end">Compte : 567</span>
+                            </p>
+                        </div>
+
+                                                    <div class="row col-md-12">
+                                <p>NOTIF SMS</p>
+                            </div>
+                            
+                            <div class="row col-md-12">
+                                <h6><b>Solde : <span class="ltr"> 17 867,67 </span> &nbsp; DA</b></h6>                            </div>
+                    </div>
+                </div>
+            </div>
+                        <div class="well well-xs">
+                <div class="row">
+                    <div class="col-xs-12">
+                                                <div class="row col-md-12">
+                            <p>
+                                <b class="danger"> <span class="ltr">-100,00 </span> &nbsp; DA </b>
+                                <span class="pull-end">Taxe : <span class="ltr">0,00</span> </span>
+                            </p>
+                        </div>
+
+                        <div class="row col-md-12">
+                            <p>223 DAB  
+                                <span class="pull-end">Compte : 381236</span>
+                            </p>
+                        </div>
+
+                                                    <div class="row col-md-12">
+                                <p>RECHARGE - DJEZZY</p>
+                            </div>
+                            
+                            <div class="row col-md-12">
+                                <h6><b>Solde : <span class="ltr"> 17 767,67 </span> &nbsp; DA</b></h6>                            </div>
+                    </div>
+                </div>
+            </div>
+            
+            <hr>
+
+            
+            <p><b>30/04/2026 : </b></p>
+
+                        <div class="well well-xs">
+                <div class="row">
+                    <div class="col-xs-12">
+                                                <div class="row col-md-12">
+                            <p>
+                                <b class="danger"> <span class="ltr">-81 000,00 </span> &nbsp; DA </b>
+                                <span class="pull-end">Taxe : <span class="ltr">36,00</span> </span>
+                            </p>
+                        </div>
+
+                        <div class="row col-md-12">
+                            <p>200 SPVIR
+                                <span class="pull-end">Compte : 18589653</span>
+                            </p>
+                        </div>
+
+                                                    <div class="row col-md-12">
+                                <p>VIREMENT</p>
+                            </div>
+                            
+                            <div class="row col-md-12">
+                                <h6><b>Solde : <span class="ltr"> -63 268,33 </span> &nbsp; DA</b></h6>                            </div>
+                    </div>
+                </div>
+            </div>
+                        <div class="well well-xs">
+                <div class="row">
+                    <div class="col-xs-12">
+                                                <div class="row col-md-12">
+                            <p>
+                                <b class="success"> <span class="ltr">+4 000,00 </span> &nbsp; DA </b>
+                                <span class="pull-end">Taxe : <span class="ltr">0,00</span> </span>
+                            </p>
+                        </div>
+
+                        <div class="row col-md-12">
+                            <p>260 SPVIR
+                                <span class="pull-end">Compte : 23691116</span>
+                            </p>
+                        </div>
+
+                                                    <div class="row col-md-12">
+                                <p>VIREMENT</p>
+                            </div>
+                            
+                            <div class="row col-md-12">
+                                <h6><b>Solde : <span class="ltr"> 731,67 </span> &nbsp; DA</b></h6>                            </div>
+                    </div>
+                </div>
+            </div>
+                        <div class="well well-xs">
+                <div class="row">
+                    <div class="col-xs-12">
+                                                <div class="row col-md-12">
+                            <p>
+                                <b class="success"> <span class="ltr">+60 000,00 </span> &nbsp; DA </b>
+                                <span class="pull-end">Taxe : <span class="ltr">0,00</span> </span>
+                            </p>
+                        </div>
+
+                        <div class="row col-md-12">
+                            <p>260 SPVIR
+                                <span class="pull-end">Compte : 8835111</span>
+                            </p>
+                        </div>
+
+                                                    <div class="row col-md-12">
+                                <p>VIREMENT</p>
+                            </div>
+                            
+                            <div class="row col-md-12">
+                                <h6><b>Solde : <span class="ltr"> 731,67 </span> &nbsp; DA</b></h6>                            </div>
+                    </div>
+                </div>
+            </div>
+            
+            <hr>
+
+            
+            <p><b>01/05/2026 : </b></p>
+
+                        <div class="well well-xs">
+                <div class="row">
+                    <div class="col-xs-12">
+                                                <div class="row col-md-12">
+                            <p>
+                                <b class="danger"> <span class="ltr">-10,00 </span> &nbsp; DA </b>
+                                <span class="pull-end">Taxe : <span class="ltr">0,00</span> </span>
+                            </p>
+                        </div>
+
+                        <div class="row col-md-12">
+                            <p>205 TAXE 
+                                <span class="pull-end">Compte : 567</span>
+                            </p>
+                        </div>
+
+                                                    <div class="row col-md-12">
+                                <p>NOTIF SMS</p>
+                            </div>
+                            
+                            <div class="row col-md-12">
+                                <h6><b>Solde : <span class="ltr"> 721,67 </span> &nbsp; DA</b></h6>                            </div>
+                    </div>
+                </div>
+            </div>
+            
+            <hr>
+
+            
+            <p><b>02/05/2026 : </b></p>
+
+                        <div class="well well-xs">
+                <div class="row">
+                    <div class="col-xs-12">
+                                                <div class="row col-md-12">
+                            <p>
+                                <b class="danger"> <span class="ltr">-100 000,00 </span> &nbsp; DA </b>
+                                <span class="pull-end">Taxe : <span class="ltr">39,00</span> </span>
+                            </p>
+                        </div>
+
+                        <div class="row col-md-12">
+                            <p>200 SPVIR
+                                <span class="pull-end">Compte : 18589653</span>
+                            </p>
+                        </div>
+
+                                                    <div class="row col-md-12">
+                                <p>VIREMENT</p>
+                            </div>
+                            
+                            <div class="row col-md-12">
+                                <h6><b>Solde : <span class="ltr"> -99 317,33 </span> &nbsp; DA</b></h6>                            </div>
+                    </div>
+                </div>
+            </div>
+                        <div class="well well-xs">
+                <div class="row">
+                    <div class="col-xs-12">
+                                                <div class="row col-md-12">
+                            <p>
+                                <b class="success"> <span class="ltr">+120 000,00 </span> &nbsp; DA </b>
+                                <span class="pull-end">Taxe : <span class="ltr">0,00</span> </span>
+                            </p>
+                        </div>
+
+                        <div class="row col-md-12">
+                            <p>260 SPVIR
+                                <span class="pull-end">Compte : 8835111</span>
+                            </p>
+                        </div>
+
+                                                    <div class="row col-md-12">
+                                <p>VIREMENT</p>
+                            </div>
+                            
+                            <div class="row col-md-12">
+                                <h6><b>Solde : <span class="ltr"> 20 682,67 </span> &nbsp; DA</b></h6>                            </div>
+                    </div>
+                </div>
+            </div>
+            
+            <hr>
+
+            
+            <p><b>03/05/2026 : </b></p>
+
+                        <div class="well well-xs">
+                <div class="row">
+                    <div class="col-xs-12">
+                                                <div class="row col-md-12">
+                            <p>
+                                <b class="danger"> <span class="ltr">-11 000,00 </span> &nbsp; DA </b>
+                                <span class="pull-end">Taxe : <span class="ltr">15,00</span> </span>
+                            </p>
+                        </div>
+
+                        <div class="row col-md-12">
+                            <p>200 SPVIR
+                                <span class="pull-end">Compte : 43445535</span>
+                            </p>
+                        </div>
+
+                                                    <div class="row col-md-12">
+                                <p>VIREMENT</p>
+                            </div>
+                            
+                            <div class="row col-md-12">
+                                <h6><b>Solde : <span class="ltr"> 9 667,67 </span> &nbsp; DA</b></h6>                            </div>
+                    </div>
+                </div>
+            </div>
+                        <div class="well well-xs">
+                <div class="row">
+                    <div class="col-xs-12">
+                                                <div class="row col-md-12">
+                            <p>
+                                <b class="danger"> <span class="ltr">-10,00 </span> &nbsp; DA </b>
+                                <span class="pull-end">Taxe : <span class="ltr">0,00</span> </span>
+                            </p>
+                        </div>
+
+                        <div class="row col-md-12">
+                            <p>205 TAXE 
+                                <span class="pull-end">Compte : 567</span>
+                            </p>
+                        </div>
+
+                                                    <div class="row col-md-12">
+                                <p>NOTIF SMS</p>
+                            </div>
+                            
+                            <div class="row col-md-12">
+                                <h6><b>Solde : <span class="ltr"> 9 657,67 </span> &nbsp; DA</b></h6>                            </div>
+                    </div>
+                </div>
+            </div>
+            
+            <hr>
+
+            
+            <p><b>04/05/2026 : </b></p>
+
+                        <div class="well well-xs">
+                <div class="row">
+                    <div class="col-xs-12">
+                                                <div class="row col-md-12">
+                            <p>
+                                <b class="danger"> <span class="ltr">-39 000,00 </span> &nbsp; DA </b>
+                                <span class="pull-end">Taxe : <span class="ltr">21,00</span> </span>
+                            </p>
+                        </div>
+
+                        <div class="row col-md-12">
+                            <p>200 SPVIR
+                                <span class="pull-end">Compte : 23475791</span>
+                            </p>
+                        </div>
+
+                                                    <div class="row col-md-12">
+                                <p>VIREMENT</p>
+                            </div>
+                            
+                            <div class="row col-md-12">
+                                <h6><b>Solde : <span class="ltr"> -29 363,33 </span> &nbsp; DA</b></h6>                            </div>
+                    </div>
+                </div>
+            </div>
+                        <div class="well well-xs">
+                <div class="row">
+                    <div class="col-xs-12">
+                                                <div class="row col-md-12">
+                            <p>
+                                <b class="danger"> <span class="ltr">-10,00 </span> &nbsp; DA </b>
+                                <span class="pull-end">Taxe : <span class="ltr">0,00</span> </span>
+                            </p>
+                        </div>
+
+                        <div class="row col-md-12">
+                            <p>205 TAXE 
+                                <span class="pull-end">Compte : 567</span>
+                            </p>
+                        </div>
+
+                                                    <div class="row col-md-12">
+                                <p>NOTIF SMS</p>
+                            </div>
+                            
+                            <div class="row col-md-12">
+                                <h6><b>Solde : <span class="ltr"> -29 373,33 </span> &nbsp; DA</b></h6>                            </div>
+                    </div>
+                </div>
+            </div>
+                        <div class="well well-xs">
+                <div class="row">
+                    <div class="col-xs-12">
+                                                <div class="row col-md-12">
+                            <p>
+                                <b class="success"> <span class="ltr">+30 000,00 </span> &nbsp; DA </b>
+                                <span class="pull-end">Taxe : <span class="ltr">0,00</span> </span>
+                            </p>
+                        </div>
+
+                        <div class="row col-md-12">
+                            <p>260 SPVIR
+                                <span class="pull-end">Compte : 6602757</span>
+                            </p>
+                        </div>
+
+                                                    <div class="row col-md-12">
+                                <p>VIREMENT</p>
+                            </div>
+                            
+                            <div class="row col-md-12">
+                                <h6><b>Solde : <span class="ltr"> 626,67 </span> &nbsp; DA</b></h6>                            </div>
+                    </div>
+                </div>
+            </div>
+            
+            <hr>
+
+            
+            <p><b>05/05/2026 : </b></p>
+
+                        <div class="well well-xs">
+                <div class="row">
+                    <div class="col-xs-12">
+                                                <div class="row col-md-12">
+                            <p>
+                                <b class="danger"> <span class="ltr">-10,00 </span> &nbsp; DA </b>
+                                <span class="pull-end">Taxe : <span class="ltr">0,00</span> </span>
+                            </p>
+                        </div>
+
+                        <div class="row col-md-12">
+                            <p>205 TAXE 
+                                <span class="pull-end">Compte : 567</span>
+                            </p>
+                        </div>
+
+                                                    <div class="row col-md-12">
+                                <p>NOTIF SMS</p>
+                            </div>
+                            
+                            <div class="row col-md-12">
+                                <h6><b>Solde : <span class="ltr"> 616,67 </span> &nbsp; DA</b></h6>                            </div>
+                    </div>
+                </div>
+            </div>
+            
+            <hr>
+
+            
+            <p><b>06/05/2026 : </b></p>
+
+                        <div class="well well-xs">
+                <div class="row">
+                    <div class="col-xs-12">
+                                                <div class="row col-md-12">
+                            <p>
+                                <b class="success"> <span class="ltr">+50 000,00 </span> &nbsp; DA </b>
+                                <span class="pull-end">Taxe : <span class="ltr">0,00</span> </span>
+                            </p>
+                        </div>
+
+                        <div class="row col-md-12">
+                            <p>260 SPVIR
+                                <span class="pull-end">Compte : 12494580</span>
+                            </p>
+                        </div>
+
+                                                    <div class="row col-md-12">
+                                <p>VIREMENT</p>
+                            </div>
+                            
+                            <div class="row col-md-12">
+                                <h6><b>Solde : <span class="ltr"> 50 616,67 </span> &nbsp; DA</b></h6>                            </div>
+                    </div>
+                </div>
+            </div>
+            
+            <hr>
+
+            
+            <p><b>07/05/2026 : </b></p>
+
+                        <div class="well well-xs">
+                <div class="row">
+                    <div class="col-xs-12">
+                                                <div class="row col-md-12">
+                            <p>
+                                <b class="danger"> <span class="ltr">-10,00 </span> &nbsp; DA </b>
+                                <span class="pull-end">Taxe : <span class="ltr">0,00</span> </span>
+                            </p>
+                        </div>
+
+                        <div class="row col-md-12">
+                            <p>205 TAXE 
+                                <span class="pull-end">Compte : 567</span>
+                            </p>
+                        </div>
+
+                                                    <div class="row col-md-12">
+                                <p>NOTIF SMS</p>
+                            </div>
+                            
+                            <div class="row col-md-12">
+                                <h6><b>Solde : <span class="ltr"> 50 606,67 </span> &nbsp; DA</b></h6>                            </div>
+                    </div>
+                </div>
+            </div>
+            
+            <hr>
+
+            
+            <p><b>10/05/2026 : </b></p>
+
+                        <div class="well well-xs">
+                <div class="row">
+                    <div class="col-xs-12">
+                                                <div class="row col-md-12">
+                            <p>
+                                <b class="danger"> <span class="ltr">-192,00 </span> &nbsp; DA </b>
+                                <span class="pull-end">Taxe : <span class="ltr">0,00</span> </span>
+                            </p>
+                        </div>
+
+                        <div class="row col-md-12">
+                            <p>223 DAB  
+                                <span class="pull-end">Compte : 9999999906</span>
+                            </p>
+                        </div>
+
+                                                    <div class="row col-md-12">
+                                <p>PAIEMENT</p>
+                            </div>
+                            
+                            <div class="row col-md-12">
+                                <h6><b>Solde : <span class="ltr"> 50 414,67 </span> &nbsp; DA</b></h6>                            </div>
+                    </div>
+                </div>
+            </div>
+            
+            <hr>
+
+            
+            <p><b>11/05/2026 : </b></p>
+
+                        <div class="well well-xs">
+                <div class="row">
+                    <div class="col-xs-12">
+                                                <div class="row col-md-12">
+                            <p>
+                                <b class="danger"> <span class="ltr">-50 000,00 </span> &nbsp; DA </b>
+                                <span class="pull-end">Taxe : <span class="ltr">24,00</span> </span>
+                            </p>
+                        </div>
+
+                        <div class="row col-md-12">
+                            <p>200 SPVIR
+                                <span class="pull-end">Compte : 23837427</span>
+                            </p>
+                        </div>
+
+                                                    <div class="row col-md-12">
+                                <p>VIREMENT</p>
+                            </div>
+                            
+                            <div class="row col-md-12">
+                                <h6><b>Solde : <span class="ltr"> 390,67 </span> &nbsp; DA</b></h6>                            </div>
+                    </div>
+                </div>
+            </div>
+                        <div class="well well-xs">
+                <div class="row">
+                    <div class="col-xs-12">
+                                                <div class="row col-md-12">
+                            <p>
+                                <b class="danger"> <span class="ltr">-50 000,00 </span> &nbsp; DA </b>
+                                <span class="pull-end">Taxe : <span class="ltr">24,00</span> </span>
+                            </p>
+                        </div>
+
+                        <div class="row col-md-12">
+                            <p>200 SPVIR
+                                <span class="pull-end">Compte : 23837427</span>
+                            </p>
+                        </div>
+
+                                                    <div class="row col-md-12">
+                                <p>VIREMENT</p>
+                            </div>
+                            
+                            <div class="row col-md-12">
+                                <h6><b>Solde : <span class="ltr"> -49 633,33 </span> &nbsp; DA</b></h6>                            </div>
+                    </div>
+                </div>
+            </div>
+                        <div class="well well-xs">
+                <div class="row">
+                    <div class="col-xs-12">
+                                                <div class="row col-md-12">
+                            <p>
+                                <b class="success"> <span class="ltr">+150 000,00 </span> &nbsp; DA </b>
+                                <span class="pull-end">Taxe : <span class="ltr">0,00</span> </span>
+                            </p>
+                        </div>
+
+                        <div class="row col-md-12">
+                            <p>057 VURG 
+                                <span class="pull-end">Compte : 314681</span>
+                            </p>
+                        </div>
+
+                                                    <div class="row col-md-12">
+                                <p>VERSEMENT - BUREAU BATNA ROUTE DE TAZOULT</p>
+                            </div>
+                            
+                            <div class="row col-md-12">
+                                <h6><b>Solde : <span class="ltr"> 100 366,67 </span> &nbsp; DA</b></h6>                            </div>
+                    </div>
+                </div>
+            </div>
+            
+            <hr>
+
+            
+            <p><b>12/05/2026 : </b></p>
+
+                        <div class="well well-xs">
+                <div class="row">
+                    <div class="col-xs-12">
+                                                <div class="row col-md-12">
+                            <p>
+                                <b class="danger"> <span class="ltr">-10,00 </span> &nbsp; DA </b>
+                                <span class="pull-end">Taxe : <span class="ltr">0,00</span> </span>
+                            </p>
+                        </div>
+
+                        <div class="row col-md-12">
+                            <p>205 TAXE 
+                                <span class="pull-end">Compte : 567</span>
+                            </p>
+                        </div>
+
+                                                    <div class="row col-md-12">
+                                <p>NOTIF SMS</p>
+                            </div>
+                            
+                            <div class="row col-md-12">
+                                <h6><b>Solde : <span class="ltr"> 100 356,67 </span> &nbsp; DA</b></h6>                            </div>
+                    </div>
+                </div>
+            </div>
+            
+            <hr>
+
+            
+            <p><b>14/05/2026 : </b></p>
+
+                        <div class="well well-xs">
+                <div class="row">
+                    <div class="col-xs-12">
+                                                <div class="row col-md-12">
+                            <p>
+                                <b class="danger"> <span class="ltr">-30 000,00 </span> &nbsp; DA </b>
+                                <span class="pull-end">Taxe : <span class="ltr">18,00</span> </span>
+                            </p>
+                        </div>
+
+                        <div class="row col-md-12">
+                            <p>200 SPVIR
+                                <span class="pull-end">Compte : 41533035</span>
+                            </p>
+                        </div>
+
+                                                    <div class="row col-md-12">
+                                <p>VIREMENT</p>
+                            </div>
+                            
+                            <div class="row col-md-12">
+                                <h6><b>Solde : <span class="ltr"> 70 338,67 </span> &nbsp; DA</b></h6>                            </div>
+                    </div>
+                </div>
+            </div>
+                        <div class="well well-xs">
+                <div class="row">
+                    <div class="col-xs-12">
+                                                <div class="row col-md-12">
+                            <p>
+                                <b class="danger"> <span class="ltr">-70 000,00 </span> &nbsp; DA </b>
+                                <span class="pull-end">Taxe : <span class="ltr">30,00</span> </span>
+                            </p>
+                        </div>
+
+                        <div class="row col-md-12">
+                            <p>200 SPVIR
+                                <span class="pull-end">Compte : 19609226</span>
+                            </p>
+                        </div>
+
+                                                    <div class="row col-md-12">
+                                <p>VIREMENT</p>
+                            </div>
+                            
+                            <div class="row col-md-12">
+                                <h6><b>Solde : <span class="ltr"> 308,67 </span> &nbsp; DA</b></h6>                            </div>
+                    </div>
+                </div>
+            </div>
+            
+            <hr>
+
+            
+            <p><b>15/05/2026 : </b></p>
+
+                        <div class="well well-xs">
+                <div class="row">
+                    <div class="col-xs-12">
+                                                <div class="row col-md-12">
+                            <p>
+                                <b class="danger"> <span class="ltr">-10,00 </span> &nbsp; DA </b>
+                                <span class="pull-end">Taxe : <span class="ltr">0,00</span> </span>
+                            </p>
+                        </div>
+
+                        <div class="row col-md-12">
+                            <p>205 TAXE 
+                                <span class="pull-end">Compte : 567</span>
+                            </p>
+                        </div>
+
+                                                    <div class="row col-md-12">
+                                <p>NOTIF SMS</p>
+                            </div>
+                            
+                            <div class="row col-md-12">
+                                <h6><b>Solde : <span class="ltr"> 298,67 </span> &nbsp; DA</b></h6>                            </div>
+                    </div>
+                </div>
+            </div>
+            
+            <hr>
+
+            
+            <p><b>20/05/2026 : </b></p>
+
+                        <div class="well well-xs">
+                <div class="row">
+                    <div class="col-xs-12">
+                                                <div class="row col-md-12">
+                            <p>
+                                <b class="success"> <span class="ltr">+36 000,00 </span> &nbsp; DA </b>
+                                <span class="pull-end">Taxe : <span class="ltr">0,00</span> </span>
+                            </p>
+                        </div>
+
+                        <div class="row col-md-12">
+                            <p>260 SPVIR
+                                <span class="pull-end">Compte : 24753705</span>
+                            </p>
+                        </div>
+
+                                                    <div class="row col-md-12">
+                                <p>VIREMENT</p>
+                            </div>
+                            
+                            <div class="row col-md-12">
+                                <h6><b>Solde : <span class="ltr"> 36 298,67 </span> &nbsp; DA</b></h6>                            </div>
+                    </div>
+                </div>
+            </div>
+            
+            <hr>
+
+            
+            <p><b>21/05/2026 : </b></p>
+
+                        <div class="well well-xs">
+                <div class="row">
+                    <div class="col-xs-12">
+                                                <div class="row col-md-12">
+                            <p>
+                                <b class="danger"> <span class="ltr">-30 000,00 </span> &nbsp; DA </b>
+                                <span class="pull-end">Taxe : <span class="ltr">18,00</span> </span>
+                            </p>
+                        </div>
+
+                        <div class="row col-md-12">
+                            <p>200 SPVIR
+                                <span class="pull-end">Compte : 6602757</span>
+                            </p>
+                        </div>
+
+                                                    <div class="row col-md-12">
+                                <p>VIREMENT</p>
+                            </div>
+                            
+                            <div class="row col-md-12">
+                                <h6><b>Solde : <span class="ltr"> 6 280,67 </span> &nbsp; DA</b></h6>                            </div>
+                    </div>
+                </div>
+            </div>
+                        <div class="well well-xs">
+                <div class="row">
+                    <div class="col-xs-12">
+                                                <div class="row col-md-12">
+                            <p>
+                                <b class="danger"> <span class="ltr">-10,00 </span> &nbsp; DA </b>
+                                <span class="pull-end">Taxe : <span class="ltr">0,00</span> </span>
+                            </p>
+                        </div>
+
+                        <div class="row col-md-12">
+                            <p>205 TAXE 
+                                <span class="pull-end">Compte : 567</span>
+                            </p>
+                        </div>
+
+                                                    <div class="row col-md-12">
+                                <p>NOTIF SMS</p>
+                            </div>
+                            
+                            <div class="row col-md-12">
+                                <h6><b>Solde : <span class="ltr"> 6 270,67 </span> &nbsp; DA</b></h6>                            </div>
+                    </div>
+                </div>
+            </div>
+            
+            <hr>
+
+            
+            <p><b>22/05/2026 : </b></p>
+
+                        <div class="well well-xs">
+                <div class="row">
+                    <div class="col-xs-12">
+                                                <div class="row col-md-12">
+                            <p>
+                                <b class="danger"> <span class="ltr">-10,00 </span> &nbsp; DA </b>
+                                <span class="pull-end">Taxe : <span class="ltr">0,00</span> </span>
+                            </p>
+                        </div>
+
+                        <div class="row col-md-12">
+                            <p>205 TAXE 
+                                <span class="pull-end">Compte : 567</span>
+                            </p>
+                        </div>
+
+                                                    <div class="row col-md-12">
+                                <p>NOTIF SMS</p>
+                            </div>
+                            
+                            <div class="row col-md-12">
+                                <h6><b>Solde : <span class="ltr"> 6 260,67 </span> &nbsp; DA</b></h6>                            </div>
+                    </div>
+                </div>
+            </div>
+            
+            <hr>
+
+            
+            <p><b>29/05/2026 : </b></p>
+
+                        <div class="well well-xs">
+                <div class="row">
+                    <div class="col-xs-12">
+                                                <div class="row col-md-12">
+                            <p>
+                                <b class="success"> <span class="ltr">+45 000,00 </span> &nbsp; DA </b>
+                                <span class="pull-end">Taxe : <span class="ltr">0,00</span> </span>
+                            </p>
+                        </div>
+
+                        <div class="row col-md-12">
+                            <p>260 SPVIR
+                                <span class="pull-end">Compte : 12494580</span>
+                            </p>
+                        </div>
+
+                                                    <div class="row col-md-12">
+                                <p>VIREMENT</p>
+                            </div>
+                            
+                            <div class="row col-md-12">
+                                <h6><b>Solde : <span class="ltr"> 51 260,67 </span> &nbsp; DA</b></h6>                            </div>
+                    </div>
+                </div>
+            </div>
+            
+            <hr>
+
+            
+            <p><b>30/05/2026 : </b></p>
+
+                        <div class="well well-xs">
+                <div class="row">
+                    <div class="col-xs-12">
+                                                <div class="row col-md-12">
+                            <p>
+                                <b class="danger"> <span class="ltr">-10,00 </span> &nbsp; DA </b>
+                                <span class="pull-end">Taxe : <span class="ltr">0,00</span> </span>
+                            </p>
+                        </div>
+
+                        <div class="row col-md-12">
+                            <p>205 TAXE 
+                                <span class="pull-end">Compte : 567</span>
+                            </p>
+                        </div>
+
+                                                    <div class="row col-md-12">
+                                <p>NOTIF SMS</p>
+                            </div>
+                            
+                            <div class="row col-md-12">
+                                <h6><b>Solde : <span class="ltr"> 51 250,67 </span> &nbsp; DA</b></h6>                            </div>
+                    </div>
+                </div>
+            </div>
+                        <div class="well well-xs">
+                <div class="row">
+                    <div class="col-xs-12">
+                                                <div class="row col-md-12">
+                            <p>
+                                <b class="success"> <span class="ltr">+38 000,00 </span> &nbsp; DA </b>
+                                <span class="pull-end">Taxe : <span class="ltr">0,00</span> </span>
+                            </p>
+                        </div>
+
+                        <div class="row col-md-12">
+                            <p>260 SPVIR
+                                <span class="pull-end">Compte : 29268926</span>
+                            </p>
+                        </div>
+
+                                                    <div class="row col-md-12">
+                                <p>VIREMENT</p>
+                            </div>
+                            
+                            <div class="row col-md-12">
+                                <h6><b>Solde : <span class="ltr"> 89 250,67 </span> &nbsp; DA</b></h6>                            </div>
+                    </div>
+                </div>
+            </div>
+            
+            <hr>
+
+            
+            <p><b>31/05/2026 : </b></p>
+
+                        <div class="well well-xs">
+                <div class="row">
+                    <div class="col-xs-12">
+                                                <div class="row col-md-12">
+                            <p>
+                                <b class="danger"> <span class="ltr">-3 000,00 </span> &nbsp; DA </b>
+                                <span class="pull-end">Taxe : <span class="ltr">12,00</span> </span>
+                            </p>
+                        </div>
+
+                        <div class="row col-md-12">
+                            <p>200 SPVIR
+                                <span class="pull-end">Compte : 28501992</span>
+                            </p>
+                        </div>
+
+                                                    <div class="row col-md-12">
+                                <p>VIREMENT</p>
+                            </div>
+                            
+                            <div class="row col-md-12">
+                                <h6><b>Solde : <span class="ltr"> 86 238,67 </span> &nbsp; DA</b></h6>                            </div>
+                    </div>
+                </div>
+            </div>
+                        <div class="well well-xs">
+                <div class="row">
+                    <div class="col-xs-12">
+                                                <div class="row col-md-12">
+                            <p>
+                                <b class="danger"> <span class="ltr">-10,00 </span> &nbsp; DA </b>
+                                <span class="pull-end">Taxe : <span class="ltr">0,00</span> </span>
+                            </p>
+                        </div>
+
+                        <div class="row col-md-12">
+                            <p>205 TAXE 
+                                <span class="pull-end">Compte : 567</span>
+                            </p>
+                        </div>
+
+                                                    <div class="row col-md-12">
+                                <p>NOTIF SMS</p>
+                            </div>
+                            
+                            <div class="row col-md-12">
+                                <h6><b>Solde : <span class="ltr"> 86 228,67 </span> &nbsp; DA</b></h6>                            </div>
+                    </div>
+                </div>
+            </div>
+                        <div class="well well-xs">
+                <div class="row">
+                    <div class="col-xs-12">
+                                                <div class="row col-md-12">
+                            <p>
+                                <b class="success"> <span class="ltr">+5 000,00 </span> &nbsp; DA </b>
+                                <span class="pull-end">Taxe : <span class="ltr">0,00</span> </span>
+                            </p>
+                        </div>
+
+                        <div class="row col-md-12">
+                            <p>260 SPVIR
+                                <span class="pull-end">Compte : 23775470</span>
+                            </p>
+                        </div>
+
+                                                    <div class="row col-md-12">
+                                <p>VIREMENT</p>
+                            </div>
+                            
+                            <div class="row col-md-12">
+                                <h6><b>Solde : <span class="ltr"> 91 228,67 </span> &nbsp; DA</b></h6>                            </div>
+                    </div>
+                </div>
+            </div>
+            
+            <hr>
+
+            
+            <p><b>01/06/2026 : </b></p>
+
+                        <div class="well well-xs">
+                <div class="row">
+                    <div class="col-xs-12">
+                                                <div class="row col-md-12">
+                            <p>
+                                <b class="danger"> <span class="ltr">-10,00 </span> &nbsp; DA </b>
+                                <span class="pull-end">Taxe : <span class="ltr">0,00</span> </span>
+                            </p>
+                        </div>
+
+                        <div class="row col-md-12">
+                            <p>205 TAXE 
+                                <span class="pull-end">Compte : 567</span>
+                            </p>
+                        </div>
+
+                                                    <div class="row col-md-12">
+                                <p>NOTIF SMS</p>
+                            </div>
+                            
+                            <div class="row col-md-12">
+                                <h6><b>Solde : <span class="ltr"> 91 218,67 </span> &nbsp; DA</b></h6>                            </div>
+                    </div>
+                </div>
+            </div>
+            
+            <hr>
+
+            
+            <p><b>02/06/2026 : </b></p>
+
+                        <div class="well well-xs">
+                <div class="row">
+                    <div class="col-xs-12">
+                                                <div class="row col-md-12">
+                            <p>
+                                <b class="danger"> <span class="ltr">-5 000,00 </span> &nbsp; DA </b>
+                                <span class="pull-end">Taxe : <span class="ltr">12,00</span> </span>
+                            </p>
+                        </div>
+
+                        <div class="row col-md-12">
+                            <p>200 SPVIR
+                                <span class="pull-end">Compte : 6602757</span>
+                            </p>
+                        </div>
+
+                                                    <div class="row col-md-12">
+                                <p>VIREMENT</p>
+                            </div>
+                            
+                            <div class="row col-md-12">
+                                <h6><b>Solde : <span class="ltr"> 86 206,67 </span> &nbsp; DA</b></h6>                            </div>
+                    </div>
+                </div>
+            </div>
+            
+            <hr>
+
+            
+            <p><b>03/06/2026 : </b></p>
+
+                        <div class="well well-xs">
+                <div class="row">
+                    <div class="col-xs-12">
+                                                <div class="row col-md-12">
+                            <p>
+                                <b class="danger"> <span class="ltr">-3 000,00 </span> &nbsp; DA </b>
+                                <span class="pull-end">Taxe : <span class="ltr">12,00</span> </span>
+                            </p>
+                        </div>
+
+                        <div class="row col-md-12">
+                            <p>200 SPVIR
+                                <span class="pull-end">Compte : 43863975</span>
+                            </p>
+                        </div>
+
+                                                    <div class="row col-md-12">
+                                <p>VIREMENT</p>
+                            </div>
+                            
+                            <div class="row col-md-12">
+                                <h6><b>Solde : <span class="ltr"> 83 194,67 </span> &nbsp; DA</b></h6>                            </div>
+                    </div>
+                </div>
+            </div>
+                        <div class="well well-xs">
+                <div class="row">
+                    <div class="col-xs-12">
+                                                <div class="row col-md-12">
+                            <p>
+                                <b class="danger"> <span class="ltr">-4 000,00 </span> &nbsp; DA </b>
+                                <span class="pull-end">Taxe : <span class="ltr">12,00</span> </span>
+                            </p>
+                        </div>
+
+                        <div class="row col-md-12">
+                            <p>200 SPVIR
+                                <span class="pull-end">Compte : 28501992</span>
+                            </p>
+                        </div>
+
+                                                    <div class="row col-md-12">
+                                <p>VIREMENT</p>
+                            </div>
+                            
+                            <div class="row col-md-12">
+                                <h6><b>Solde : <span class="ltr"> 79 182,67 </span> &nbsp; DA</b></h6>                            </div>
+                    </div>
+                </div>
+            </div>
+                        <div class="well well-xs">
+                <div class="row">
+                    <div class="col-xs-12">
+                                                <div class="row col-md-12">
+                            <p>
+                                <b class="danger"> <span class="ltr">-20 000,00 </span> &nbsp; DA </b>
+                                <span class="pull-end">Taxe : <span class="ltr">15,00</span> </span>
+                            </p>
+                        </div>
+
+                        <div class="row col-md-12">
+                            <p>200 SPVIR
+                                <span class="pull-end">Compte : 28501992</span>
+                            </p>
+                        </div>
+
+                                                    <div class="row col-md-12">
+                                <p>VIREMENT</p>
+                            </div>
+                            
+                            <div class="row col-md-12">
+                                <h6><b>Solde : <span class="ltr"> 59 167,67 </span> &nbsp; DA</b></h6>                            </div>
+                    </div>
+                </div>
+            </div>
+                        <div class="well well-xs">
+                <div class="row">
+                    <div class="col-xs-12">
+                                                <div class="row col-md-12">
+                            <p>
+                                <b class="danger"> <span class="ltr">-10,00 </span> &nbsp; DA </b>
+                                <span class="pull-end">Taxe : <span class="ltr">0,00</span> </span>
+                            </p>
+                        </div>
+
+                        <div class="row col-md-12">
+                            <p>205 TAXE 
+                                <span class="pull-end">Compte : 567</span>
+                            </p>
+                        </div>
+
+                                                    <div class="row col-md-12">
+                                <p>NOTIF SMS</p>
+                            </div>
+                            
+                            <div class="row col-md-12">
+                                <h6><b>Solde : <span class="ltr"> 59 157,67 </span> &nbsp; DA</b></h6>                            </div>
+                    </div>
+                </div>
+            </div>
+            
+            <hr>
+
+            
+            <p><b>04/06/2026 : </b></p>
+
+                        <div class="well well-xs">
+                <div class="row">
+                    <div class="col-xs-12">
+                                                <div class="row col-md-12">
+                            <p>
+                                <b class="danger"> <span class="ltr">-10,00 </span> &nbsp; DA </b>
+                                <span class="pull-end">Taxe : <span class="ltr">0,00</span> </span>
+                            </p>
+                        </div>
+
+                        <div class="row col-md-12">
+                            <p>205 TAXE 
+                                <span class="pull-end">Compte : 567</span>
+                            </p>
+                        </div>
+
+                                                    <div class="row col-md-12">
+                                <p>NOTIF SMS</p>
+                            </div>
+                            
+                            <div class="row col-md-12">
+                                <h6><b>Solde : <span class="ltr"> 59 147,67 </span> &nbsp; DA</b></h6>                            </div>
+                    </div>
+                </div>
+            </div>
+            
+            <hr>
+
+            
+            <p><b>05/06/2026 : </b></p>
+
+                        <div class="well well-xs">
+                <div class="row">
+                    <div class="col-xs-12">
+                                                <div class="row col-md-12">
+                            <p>
+                                <b class="danger"> <span class="ltr">-480,00 </span> &nbsp; DA </b>
+                                <span class="pull-end">Taxe : <span class="ltr">0,00</span> </span>
+                            </p>
+                        </div>
+
+                        <div class="row col-md-12">
+                            <p>223 DAB  
+                                <span class="pull-end">Compte : 9999999906</span>
+                            </p>
+                        </div>
+
+                                                    <div class="row col-md-12">
+                                <p>PAIEMENT</p>
+                            </div>
+                            
+                            <div class="row col-md-12">
+                                <h6><b>Solde : <span class="ltr"> 58 667,67 </span> &nbsp; DA</b></h6>                            </div>
+                    </div>
+                </div>
+            </div>
+                        <div class="well well-xs">
+                <div class="row">
+                    <div class="col-xs-12">
+                                                <div class="row col-md-12">
+                            <p>
+                                <b class="success"> <span class="ltr">+480,00 </span> &nbsp; DA </b>
+                                <span class="pull-end">Taxe : <span class="ltr">0,00</span> </span>
+                            </p>
+                        </div>
+
+                        <div class="row col-md-12">
+                            <p>284 DAB  
+                                <span class="pull-end">Compte : 1</span>
+                            </p>
+                        </div>
+
+                                                    <div class="row col-md-12">
+                                <p>-</p>
+                            </div>
+                            
+                            <div class="row col-md-12">
+                                <h6><b>Solde : <span class="ltr"> 59 147,67 </span> &nbsp; DA</b></h6>                            </div>
+                    </div>
+                </div>
+            </div>
+            
+            <hr>
+
+            
+            <p><b>06/06/2026 : </b></p>
+
+                        <div class="well well-xs">
+                <div class="row">
+                    <div class="col-xs-12">
+                                                <div class="row col-md-12">
+                            <p>
+                                <b class="danger"> <span class="ltr">-22 000,00 </span> &nbsp; DA </b>
+                                <span class="pull-end">Taxe : <span class="ltr">18,00</span> </span>
+                            </p>
+                        </div>
+
+                        <div class="row col-md-12">
+                            <p>200 SPVIR
+                                <span class="pull-end">Compte : 6602757</span>
+                            </p>
+                        </div>
+
+                                                    <div class="row col-md-12">
+                                <p>VIREMENT</p>
+                            </div>
+                            
+                            <div class="row col-md-12">
+                                <h6><b>Solde : <span class="ltr"> 37 129,67 </span> &nbsp; DA</b></h6>                            </div>
+                    </div>
+                </div>
+            </div>
+            
+            <hr>
+
+            
+            <p><b>07/06/2026 : </b></p>
+
+                        <div class="well well-xs">
+                <div class="row">
+                    <div class="col-xs-12">
+                                                <div class="row col-md-12">
+                            <p>
+                                <b class="danger"> <span class="ltr">-3 500,00 </span> &nbsp; DA </b>
+                                <span class="pull-end">Taxe : <span class="ltr">12,00</span> </span>
+                            </p>
+                        </div>
+
+                        <div class="row col-md-12">
+                            <p>200 SPVIR
+                                <span class="pull-end">Compte : 43579861</span>
+                            </p>
+                        </div>
+
+                                                    <div class="row col-md-12">
+                                <p>VIREMENT</p>
+                            </div>
+                            
+                            <div class="row col-md-12">
+                                <h6><b>Solde : <span class="ltr"> 33 617,67 </span> &nbsp; DA</b></h6>                            </div>
+                    </div>
+                </div>
+            </div>
+                        <div class="well well-xs">
+                <div class="row">
+                    <div class="col-xs-12">
+                                                <div class="row col-md-12">
+                            <p>
+                                <b class="danger"> <span class="ltr">-10,00 </span> &nbsp; DA </b>
+                                <span class="pull-end">Taxe : <span class="ltr">0,00</span> </span>
+                            </p>
+                        </div>
+
+                        <div class="row col-md-12">
+                            <p>205 TAXE 
+                                <span class="pull-end">Compte : 567</span>
+                            </p>
+                        </div>
+
+                                                    <div class="row col-md-12">
+                                <p>NOTIF SMS</p>
+                            </div>
+                            
+                            <div class="row col-md-12">
+                                <h6><b>Solde : <span class="ltr"> 33 607,67 </span> &nbsp; DA</b></h6>                            </div>
+                    </div>
+                </div>
+            </div>
+            
+            <hr>
+
+            
+            <p><b>08/06/2026 : </b></p>
+
+                        <div class="well well-xs">
+                <div class="row">
+                    <div class="col-xs-12">
+                                                <div class="row col-md-12">
+                            <p>
+                                <b class="danger"> <span class="ltr">-10,00 </span> &nbsp; DA </b>
+                                <span class="pull-end">Taxe : <span class="ltr">0,00</span> </span>
+                            </p>
+                        </div>
+
+                        <div class="row col-md-12">
+                            <p>205 TAXE 
+                                <span class="pull-end">Compte : 567</span>
+                            </p>
+                        </div>
+
+                                                    <div class="row col-md-12">
+                                <p>NOTIF SMS</p>
+                            </div>
+                            
+                            <div class="row col-md-12">
+                                <h6><b>Solde : <span class="ltr"> 33 597,67 </span> &nbsp; DA</b></h6>                            </div>
+                    </div>
+                </div>
+            </div>
+            
+            <hr>
+
+            
+            <p><b>09/06/2026 : </b></p>
+
+                        <div class="well well-xs">
+                <div class="row">
+                    <div class="col-xs-12">
+                                                <div class="row col-md-12">
+                            <p>
+                                <b class="danger"> <span class="ltr">-16 500,00 </span> &nbsp; DA </b>
+                                <span class="pull-end">Taxe : <span class="ltr">15,00</span> </span>
+                            </p>
+                        </div>
+
+                        <div class="row col-md-12">
+                            <p>200 SPVIR
+                                <span class="pull-end">Compte : 28501992</span>
+                            </p>
+                        </div>
+
+                                                    <div class="row col-md-12">
+                                <p>VIREMENT</p>
+                            </div>
+                            
+                            <div class="row col-md-12">
+                                <h6><b>Solde : <span class="ltr"> 17 082,67 </span> &nbsp; DA</b></h6>                            </div>
+                    </div>
+                </div>
+            </div>
+                        <div class="well well-xs">
+                <div class="row">
+                    <div class="col-xs-12">
+                                                <div class="row col-md-12">
+                            <p>
+                                <b class="success"> <span class="ltr">+20 000,00 </span> &nbsp; DA </b>
+                                <span class="pull-end">Taxe : <span class="ltr">0,00</span> </span>
+                            </p>
+                        </div>
+
+                        <div class="row col-md-12">
+                            <p>260 SPVIR
+                                <span class="pull-end">Compte : 17450949</span>
+                            </p>
+                        </div>
+
+                                                    <div class="row col-md-12">
+                                <p>VIREMENT</p>
+                            </div>
+                            
+                            <div class="row col-md-12">
+                                <h6><b>Solde : <span class="ltr"> 37 082,67 </span> &nbsp; DA</b></h6>                            </div>
+                    </div>
+                </div>
+            </div>
+            
+            <hr>
+
+            
+            <p><b>10/06/2026 : </b></p>
+
+                        <div class="well well-xs">
+                <div class="row">
+                    <div class="col-xs-12">
+                                                <div class="row col-md-12">
+                            <p>
+                                <b class="danger"> <span class="ltr">-28 000,00 </span> &nbsp; DA </b>
+                                <span class="pull-end">Taxe : <span class="ltr">18,00</span> </span>
+                            </p>
+                        </div>
+
+                        <div class="row col-md-12">
+                            <p>200 SPVIR
+                                <span class="pull-end">Compte : 28238416</span>
+                            </p>
+                        </div>
+
+                                                    <div class="row col-md-12">
+                                <p>VIREMENT</p>
+                            </div>
+                            
+                            <div class="row col-md-12">
+                                <h6><b>Solde : <span class="ltr"> 9 064,67 </span> &nbsp; DA</b></h6>                            </div>
+                    </div>
+                </div>
+            </div>
+                        <div class="well well-xs">
+                <div class="row">
+                    <div class="col-xs-12">
+                                                <div class="row col-md-12">
+                            <p>
+                                <b class="danger"> <span class="ltr">-10,00 </span> &nbsp; DA </b>
+                                <span class="pull-end">Taxe : <span class="ltr">0,00</span> </span>
+                            </p>
+                        </div>
+
+                        <div class="row col-md-12">
+                            <p>205 TAXE 
+                                <span class="pull-end">Compte : 567</span>
+                            </p>
+                        </div>
+
+                                                    <div class="row col-md-12">
+                                <p>NOTIF SMS</p>
+                            </div>
+                            
+                            <div class="row col-md-12">
+                                <h6><b>Solde : <span class="ltr"> 9 054,67 </span> &nbsp; DA</b></h6>                            </div>
+                    </div>
+                </div>
+            </div>
+                        <div class="well well-xs">
+                <div class="row">
+                    <div class="col-xs-12">
+                                                <div class="row col-md-12">
+                            <p>
+                                <b class="danger"> <span class="ltr">-288,00 </span> &nbsp; DA </b>
+                                <span class="pull-end">Taxe : <span class="ltr">0,00</span> </span>
+                            </p>
+                        </div>
+
+                        <div class="row col-md-12">
+                            <p>223 DAB  
+                                <span class="pull-end">Compte : 9999999906</span>
+                            </p>
+                        </div>
+
+                                                    <div class="row col-md-12">
+                                <p>PAIEMENT</p>
+                            </div>
+                            
+                            <div class="row col-md-12">
+                                <h6><b>Solde : <span class="ltr"> 8 766,67 </span> &nbsp; DA</b></h6>                            </div>
+                    </div>
+                </div>
+            </div>
+                        <div class="well well-xs">
+                <div class="row">
+                    <div class="col-xs-12">
+                                                <div class="row col-md-12">
+                            <p>
+                                <b class="success"> <span class="ltr">+288,00 </span> &nbsp; DA </b>
+                                <span class="pull-end">Taxe : <span class="ltr">0,00</span> </span>
+                            </p>
+                        </div>
+
+                        <div class="row col-md-12">
+                            <p>284 DAB  
+                                <span class="pull-end">Compte : 1</span>
+                            </p>
+                        </div>
+
+                                                    <div class="row col-md-12">
+                                <p>-</p>
+                            </div>
+                            
+                            <div class="row col-md-12">
+                                <h6><b>Solde : <span class="ltr"> 9 054,67 </span> &nbsp; DA</b></h6>                            </div>
+                    </div>
+                </div>
+            </div>
+            
+            <hr>
+
+            
+            <p><b>11/06/2026 : </b></p>
+
+                        <div class="well well-xs">
+                <div class="row">
+                    <div class="col-xs-12">
+                                                <div class="row col-md-12">
+                            <p>
+                                <b class="danger"> <span class="ltr">-9 000,00 </span> &nbsp; DA </b>
+                                <span class="pull-end">Taxe : <span class="ltr">12,00</span> </span>
+                            </p>
+                        </div>
+
+                        <div class="row col-md-12">
+                            <p>200 SPVIR
+                                <span class="pull-end">Compte : 22664169</span>
+                            </p>
+                        </div>
+
+                                                    <div class="row col-md-12">
+                                <p>VIREMENT</p>
+                            </div>
+                            
+                            <div class="row col-md-12">
+                                <h6><b>Solde : <span class="ltr"> 42,67 </span> &nbsp; DA</b></h6>                            </div>
+                    </div>
+                </div>
+            </div>
+                        <div class="well well-xs">
+                <div class="row">
+                    <div class="col-xs-12">
+                                                <div class="row col-md-12">
+                            <p>
+                                <b class="danger"> <span class="ltr">-12 000,00 </span> &nbsp; DA </b>
+                                <span class="pull-end">Taxe : <span class="ltr">15,00</span> </span>
+                            </p>
+                        </div>
+
+                        <div class="row col-md-12">
+                            <p>200 SPVIR
+                                <span class="pull-end">Compte : 5052827</span>
+                            </p>
+                        </div>
+
+                                                    <div class="row col-md-12">
+                                <p>VIREMENT</p>
+                            </div>
+                            
+                            <div class="row col-md-12">
+                                <h6><b>Solde : <span class="ltr"> -11 972,33 </span> &nbsp; DA</b></h6>                            </div>
+                    </div>
+                </div>
+            </div>
+                        <div class="well well-xs">
+                <div class="row">
+                    <div class="col-xs-12">
+                                                <div class="row col-md-12">
+                            <p>
+                                <b class="danger"> <span class="ltr">-10,00 </span> &nbsp; DA </b>
+                                <span class="pull-end">Taxe : <span class="ltr">0,00</span> </span>
+                            </p>
+                        </div>
+
+                        <div class="row col-md-12">
+                            <p>205 TAXE 
+                                <span class="pull-end">Compte : 567</span>
+                            </p>
+                        </div>
+
+                                                    <div class="row col-md-12">
+                                <p>NOTIF SMS</p>
+                            </div>
+                            
+                            <div class="row col-md-12">
+                                <h6><b>Solde : <span class="ltr"> -11 982,33 </span> &nbsp; DA</b></h6>                            </div>
+                    </div>
+                </div>
+            </div>
+                        <div class="well well-xs">
+                <div class="row">
+                    <div class="col-xs-12">
+                                                <div class="row col-md-12">
+                            <p>
+                                <b class="success"> <span class="ltr">+10 000,00 </span> &nbsp; DA </b>
+                                <span class="pull-end">Taxe : <span class="ltr">0,00</span> </span>
+                            </p>
+                        </div>
+
+                        <div class="row col-md-12">
+                            <p>260 SPVIR
+                                <span class="pull-end">Compte : 25935733</span>
+                            </p>
+                        </div>
+
+                                                    <div class="row col-md-12">
+                                <p>VIREMENT</p>
+                            </div>
+                            
+                            <div class="row col-md-12">
+                                <h6><b>Solde : <span class="ltr"> 98 017,67 </span> &nbsp; DA</b></h6>                            </div>
+                    </div>
+                </div>
+            </div>
+                        <div class="well well-xs">
+                <div class="row">
+                    <div class="col-xs-12">
+                                                <div class="row col-md-12">
+                            <p>
+                                <b class="success"> <span class="ltr">+100 000,00 </span> &nbsp; DA </b>
+                                <span class="pull-end">Taxe : <span class="ltr">0,00</span> </span>
+                            </p>
+                        </div>
+
+                        <div class="row col-md-12">
+                            <p>260 SPVIR
+                                <span class="pull-end">Compte : 8835111</span>
+                            </p>
+                        </div>
+
+                                                    <div class="row col-md-12">
+                                <p>VIREMENT</p>
+                            </div>
+                            
+                            <div class="row col-md-12">
+                                <h6><b>Solde : <span class="ltr"> 98 017,67 </span> &nbsp; DA</b></h6>                            </div>
+                    </div>
+                </div>
+            </div>
+            
+            <hr>
+
+            
+            <p><b>12/06/2026 : </b></p>
+
+                        <div class="well well-xs">
+                <div class="row">
+                    <div class="col-xs-12">
+                                                <div class="row col-md-12">
+                            <p>
+                                <b class="danger"> <span class="ltr">-10,00 </span> &nbsp; DA </b>
+                                <span class="pull-end">Taxe : <span class="ltr">0,00</span> </span>
+                            </p>
+                        </div>
+
+                        <div class="row col-md-12">
+                            <p>205 TAXE 
+                                <span class="pull-end">Compte : 567</span>
+                            </p>
+                        </div>
+
+                                                    <div class="row col-md-12">
+                                <p>NOTIF SMS</p>
+                            </div>
+                            
+                            <div class="row col-md-12">
+                                <h6><b>Solde : <span class="ltr"> 98 007,67 </span> &nbsp; DA</b></h6>                            </div>
+                    </div>
+                </div>
+            </div>
+            
+            <hr>
+
+            
+            <p><b>14/06/2026 : </b></p>
+
+                        <div class="well well-xs">
+                <div class="row">
+                    <div class="col-xs-12">
+                                                <div class="row col-md-12">
+                            <p>
+                                <b class="danger"> <span class="ltr">-4 000,00 </span> &nbsp; DA </b>
+                                <span class="pull-end">Taxe : <span class="ltr">12,00</span> </span>
+                            </p>
+                        </div>
+
+                        <div class="row col-md-12">
+                            <p>200 SPVIR
+                                <span class="pull-end">Compte : 19561427</span>
+                            </p>
+                        </div>
+
+                                                    <div class="row col-md-12">
+                                <p>VIREMENT</p>
+                            </div>
+                            
+                            <div class="row col-md-12">
+                                <h6><b>Solde : <span class="ltr"> 93 995,67 </span> &nbsp; DA</b></h6>                            </div>
+                    </div>
+                </div>
+            </div>
+                        <div class="well well-xs">
+                <div class="row">
+                    <div class="col-xs-12">
+                                                <div class="row col-md-12">
+                            <p>
+                                <b class="success"> <span class="ltr">+5 000,00 </span> &nbsp; DA </b>
+                                <span class="pull-end">Taxe : <span class="ltr">0,00</span> </span>
+                            </p>
+                        </div>
+
+                        <div class="row col-md-12">
+                            <p>260 SPVIR
+                                <span class="pull-end">Compte : 17450949</span>
+                            </p>
+                        </div>
+
+                                                    <div class="row col-md-12">
+                                <p>VIREMENT</p>
+                            </div>
+                            
+                            <div class="row col-md-12">
+                                <h6><b>Solde : <span class="ltr"> 98 995,67 </span> &nbsp; DA</b></h6>                            </div>
+                    </div>
+                </div>
+            </div>
+            
+            <hr>
+
+            
+            <p><b>15/06/2026 : </b></p>
+
+                        <div class="well well-xs">
+                <div class="row">
+                    <div class="col-xs-12">
+                                                <div class="row col-md-12">
+                            <p>
+                                <b class="danger"> <span class="ltr">-10,00 </span> &nbsp; DA </b>
+                                <span class="pull-end">Taxe : <span class="ltr">0,00</span> </span>
+                            </p>
+                        </div>
+
+                        <div class="row col-md-12">
+                            <p>205 TAXE 
+                                <span class="pull-end">Compte : 567</span>
+                            </p>
+                        </div>
+
+                                                    <div class="row col-md-12">
+                                <p>NOTIF SMS</p>
+                            </div>
+                            
+                            <div class="row col-md-12">
+                                <h6><b>Solde : <span class="ltr"> 98 985,67 </span> &nbsp; DA</b></h6>                            </div>
+                    </div>
+                </div>
+            </div>
+            
+            <hr>
+
+            
+            <p><b>16/06/2026 : </b></p>
+
+                        <div class="well well-xs">
+                <div class="row">
+                    <div class="col-xs-12">
+                                                <div class="row col-md-12">
+                            <p>
+                                <b class="danger"> <span class="ltr">-6 000,00 </span> &nbsp; DA </b>
+                                <span class="pull-end">Taxe : <span class="ltr">12,00</span> </span>
+                            </p>
+                        </div>
+
+                        <div class="row col-md-12">
+                            <p>200 SPVIR
+                                <span class="pull-end">Compte : 42659196</span>
+                            </p>
+                        </div>
+
+                                                    <div class="row col-md-12">
+                                <p>VIREMENT</p>
+                            </div>
+                            
+                            <div class="row col-md-12">
+                                <h6><b>Solde : <span class="ltr"> 92 973,67 </span> &nbsp; DA</b></h6>                            </div>
+                    </div>
+                </div>
+            </div>
+                        <div class="well well-xs">
+                <div class="row">
+                    <div class="col-xs-12">
+                                                <div class="row col-md-12">
+                            <p>
+                                <b class="success"> <span class="ltr">+7 000,00 </span> &nbsp; DA </b>
+                                <span class="pull-end">Taxe : <span class="ltr">0,00</span> </span>
+                            </p>
+                        </div>
+
+                        <div class="row col-md-12">
+                            <p>260 SPVIR
+                                <span class="pull-end">Compte : 17450949</span>
+                            </p>
+                        </div>
+
+                                                    <div class="row col-md-12">
+                                <p>VIREMENT</p>
+                            </div>
+                            
+                            <div class="row col-md-12">
+                                <h6><b>Solde : <span class="ltr"> 99 973,67 </span> &nbsp; DA</b></h6>                            </div>
+                    </div>
+                </div>
+            </div>
+            
+            <hr>
+
+            
+            <p><b>17/06/2026 : </b></p>
+
+                        <div class="well well-xs">
+                <div class="row">
+                    <div class="col-xs-12">
+                                                <div class="row col-md-12">
+                            <p>
+                                <b class="danger"> <span class="ltr">-10,00 </span> &nbsp; DA </b>
+                                <span class="pull-end">Taxe : <span class="ltr">0,00</span> </span>
+                            </p>
+                        </div>
+
+                        <div class="row col-md-12">
+                            <p>205 TAXE 
+                                <span class="pull-end">Compte : 567</span>
+                            </p>
+                        </div>
+
+                                                    <div class="row col-md-12">
+                                <p>NOTIF SMS</p>
+                            </div>
+                            
+                            <div class="row col-md-12">
+                                <h6><b>Solde : <span class="ltr"> 99 963,67 </span> &nbsp; DA</b></h6>                            </div>
+                    </div>
+                </div>
+            </div>
+                        <div class="well well-xs">
+                <div class="row">
+                    <div class="col-xs-12">
+                                                <div class="row col-md-12">
+                            <p>
+                                <b class="danger"> <span class="ltr">-10 000,00 </span> &nbsp; DA </b>
+                                <span class="pull-end">Taxe : <span class="ltr">35,00</span> </span>
+                            </p>
+                        </div>
+
+                        <div class="row col-md-12">
+                            <p>223 DAB  
+                                <span class="pull-end">Compte : 9999999906</span>
+                            </p>
+                        </div>
+
+                                                    <div class="row col-md-12">
+                                <p>RETRAIT GAB BANQUE</p>
+                            </div>
+                            
+                            <div class="row col-md-12">
+                                <h6><b>Solde : <span class="ltr"> 89 928,67 </span> &nbsp; DA</b></h6>                            </div>
+                    </div>
+                </div>
+            </div>
+            
+            <hr>
+
+            
+            <p><b>19/06/2026 : </b></p>
+
+                        <div class="well well-xs">
+                <div class="row">
+                    <div class="col-xs-12">
+                                                <div class="row col-md-12">
+                            <p>
+                                <b class="danger"> <span class="ltr">-10 000,00 </span> &nbsp; DA </b>
+                                <span class="pull-end">Taxe : <span class="ltr">12,00</span> </span>
+                            </p>
+                        </div>
+
+                        <div class="row col-md-12">
+                            <p>200 SPVIR
+                                <span class="pull-end">Compte : 44608851</span>
+                            </p>
+                        </div>
+
+                                                    <div class="row col-md-12">
+                                <p>VIREMENT</p>
+                            </div>
+                            
+                            <div class="row col-md-12">
+                                <h6><b>Solde : <span class="ltr"> 79 916,67 </span> &nbsp; DA</b></h6>                            </div>
+                    </div>
+                </div>
+            </div>
+                        <div class="well well-xs">
+                <div class="row">
+                    <div class="col-xs-12">
+                                                <div class="row col-md-12">
+                            <p>
+                                <b class="danger"> <span class="ltr">-20 000,00 </span> &nbsp; DA </b>
+                                <span class="pull-end">Taxe : <span class="ltr">15,00</span> </span>
+                            </p>
+                        </div>
+
+                        <div class="row col-md-12">
+                            <p>200 SPVIR
+                                <span class="pull-end">Compte : 26156443</span>
+                            </p>
+                        </div>
+
+                                                    <div class="row col-md-12">
+                                <p>VIREMENT</p>
+                            </div>
+                            
+                            <div class="row col-md-12">
+                                <h6><b>Solde : <span class="ltr"> 59 901,67 </span> &nbsp; DA</b></h6>                            </div>
+                    </div>
+                </div>
+            </div>
+                        <div class="well well-xs">
+                <div class="row">
+                    <div class="col-xs-12">
+                                                <div class="row col-md-12">
+                            <p>
+                                <b class="danger"> <span class="ltr">-10,00 </span> &nbsp; DA </b>
+                                <span class="pull-end">Taxe : <span class="ltr">0,00</span> </span>
+                            </p>
+                        </div>
+
+                        <div class="row col-md-12">
+                            <p>205 TAXE 
+                                <span class="pull-end">Compte : 567</span>
+                            </p>
+                        </div>
+
+                                                    <div class="row col-md-12">
+                                <p>NOTIF SMS</p>
+                            </div>
+                            
+                            <div class="row col-md-12">
+                                <h6><b>Solde : <span class="ltr"> 59 891,67 </span> &nbsp; DA</b></h6>                            </div>
+                    </div>
+                </div>
+            </div>
+                        <div class="well well-xs">
+                <div class="row">
+                    <div class="col-xs-12">
+                                                <div class="row col-md-12">
+                            <p>
+                                <b class="success"> <span class="ltr">+2 000,00 </span> &nbsp; DA </b>
+                                <span class="pull-end">Taxe : <span class="ltr">0,00</span> </span>
+                            </p>
+                        </div>
+
+                        <div class="row col-md-12">
+                            <p>260 SPVIR
+                                <span class="pull-end">Compte : 44410837</span>
+                            </p>
+                        </div>
+
+                                                    <div class="row col-md-12">
+                                <p>VIREMENT</p>
+                            </div>
+                            
+                            <div class="row col-md-12">
+                                <h6><b>Solde : <span class="ltr"> 142 891,67 </span> &nbsp; DA</b></h6>                            </div>
+                    </div>
+                </div>
+            </div>
+                        <div class="well well-xs">
+                <div class="row">
+                    <div class="col-xs-12">
+                                                <div class="row col-md-12">
+                            <p>
+                                <b class="success"> <span class="ltr">+11 000,00 </span> &nbsp; DA </b>
+                                <span class="pull-end">Taxe : <span class="ltr">0,00</span> </span>
+                            </p>
+                        </div>
+
+                        <div class="row col-md-12">
+                            <p>260 SPVIR
+                                <span class="pull-end">Compte : 44150579</span>
+                            </p>
+                        </div>
+
+                                                    <div class="row col-md-12">
+                                <p>VIREMENT</p>
+                            </div>
+                            
+                            <div class="row col-md-12">
+                                <h6><b>Solde : <span class="ltr"> 142 891,67 </span> &nbsp; DA</b></h6>                            </div>
+                    </div>
+                </div>
+            </div>
+                        <div class="well well-xs">
+                <div class="row">
+                    <div class="col-xs-12">
+                                                <div class="row col-md-12">
+                            <p>
+                                <b class="success"> <span class="ltr">+20 000,00 </span> &nbsp; DA </b>
+                                <span class="pull-end">Taxe : <span class="ltr">0,00</span> </span>
+                            </p>
+                        </div>
+
+                        <div class="row col-md-12">
+                            <p>260 SPVIR
+                                <span class="pull-end">Compte : 14846035</span>
+                            </p>
+                        </div>
+
+                                                    <div class="row col-md-12">
+                                <p>VIREMENT</p>
+                            </div>
+                            
+                            <div class="row col-md-12">
+                                <h6><b>Solde : <span class="ltr"> 142 891,67 </span> &nbsp; DA</b></h6>                            </div>
+                    </div>
+                </div>
+            </div>
+                        <div class="well well-xs">
+                <div class="row">
+                    <div class="col-xs-12">
+                                                <div class="row col-md-12">
+                            <p>
+                                <b class="success"> <span class="ltr">+20 000,00 </span> &nbsp; DA </b>
+                                <span class="pull-end">Taxe : <span class="ltr">0,00</span> </span>
+                            </p>
+                        </div>
+
+                        <div class="row col-md-12">
+                            <p>260 SPVIR
+                                <span class="pull-end">Compte : 43831404</span>
+                            </p>
+                        </div>
+
+                                                    <div class="row col-md-12">
+                                <p>VIREMENT</p>
+                            </div>
+                            
+                            <div class="row col-md-12">
+                                <h6><b>Solde : <span class="ltr"> 142 891,67 </span> &nbsp; DA</b></h6>                            </div>
+                    </div>
+                </div>
+            </div>
+                        <div class="well well-xs">
+                <div class="row">
+                    <div class="col-xs-12">
+                                                <div class="row col-md-12">
+                            <p>
+                                <b class="success"> <span class="ltr">+30 000,00 </span> &nbsp; DA </b>
+                                <span class="pull-end">Taxe : <span class="ltr">0,00</span> </span>
+                            </p>
+                        </div>
+
+                        <div class="row col-md-12">
+                            <p>260 SPVIR
+                                <span class="pull-end">Compte : 6602757</span>
+                            </p>
+                        </div>
+
+                                                    <div class="row col-md-12">
+                                <p>VIREMENT</p>
+                            </div>
+                            
+                            <div class="row col-md-12">
+                                <h6><b>Solde : <span class="ltr"> 142 891,67 </span> &nbsp; DA</b></h6>                            </div>
+                    </div>
+                </div>
+            </div>
+            
+            <hr>
+
+            
+            <p><b>20/06/2026 : </b></p>
+
+                        <div class="well well-xs">
+                <div class="row">
+                    <div class="col-xs-12">
+                                                <div class="row col-md-12">
+                            <p>
+                                <b class="danger"> <span class="ltr">-10,00 </span> &nbsp; DA </b>
+                                <span class="pull-end">Taxe : <span class="ltr">0,00</span> </span>
+                            </p>
+                        </div>
+
+                        <div class="row col-md-12">
+                            <p>205 TAXE 
+                                <span class="pull-end">Compte : 567</span>
+                            </p>
+                        </div>
+
+                                                    <div class="row col-md-12">
+                                <p>NOTIF SMS</p>
+                            </div>
+                            
+                            <div class="row col-md-12">
+                                <h6><b>Solde : <span class="ltr"> 142 881,67 </span> &nbsp; DA</b></h6>                            </div>
+                    </div>
+                </div>
+            </div>
+                        <div class="well well-xs">
+                <div class="row">
+                    <div class="col-xs-12">
+                                                <div class="row col-md-12">
+                            <p>
+                                <b class="danger"> <span class="ltr">-1 200,00 </span> &nbsp; DA </b>
+                                <span class="pull-end">Taxe : <span class="ltr">0,00</span> </span>
+                            </p>
+                        </div>
+
+                        <div class="row col-md-12">
+                            <p>223 DAB  
+                                <span class="pull-end">Compte : 381236</span>
+                            </p>
+                        </div>
+
+                                                    <div class="row col-md-12">
+                                <p>PAIEMENT INTERNET - DJEZZY</p>
+                            </div>
+                            
+                            <div class="row col-md-12">
+                                <h6><b>Solde : <span class="ltr"> 99 646,67 </span> &nbsp; DA</b></h6>                            </div>
+                    </div>
+                </div>
+            </div>
+                        <div class="well well-xs">
+                <div class="row">
+                    <div class="col-xs-12">
+                                                <div class="row col-md-12">
+                            <p>
+                                <b class="danger"> <span class="ltr">-42 000,00 </span> &nbsp; DA </b>
+                                <span class="pull-end">Taxe : <span class="ltr">35,00</span> </span>
+                            </p>
+                        </div>
+
+                        <div class="row col-md-12">
+                            <p>223 DAB  
+                                <span class="pull-end">Compte : 9999999906</span>
+                            </p>
+                        </div>
+
+                                                    <div class="row col-md-12">
+                                <p>RETRAIT GAB BANQUE</p>
+                            </div>
+                            
+                            <div class="row col-md-12">
+                                <h6><b>Solde : <span class="ltr"> 99 646,67 </span> &nbsp; DA</b></h6>                            </div>
+                    </div>
+                </div>
+            </div>
+            
+            <hr>
+
+            
+            <p><b>21/06/2026 : </b></p>
+
+                        <div class="well well-xs">
+                <div class="row">
+                    <div class="col-xs-12">
+                                                <div class="row col-md-12">
+                            <p>
+                                <b class="danger"> <span class="ltr">-600,00 </span> &nbsp; DA </b>
+                                <span class="pull-end">Taxe : <span class="ltr">12,00</span> </span>
+                            </p>
+                        </div>
+
+                        <div class="row col-md-12">
+                            <p>200 SPVIR
+                                <span class="pull-end">Compte : 27963356</span>
+                            </p>
+                        </div>
+
+                                                    <div class="row col-md-12">
+                                <p>VIREMENT</p>
+                            </div>
+                            
+                            <div class="row col-md-12">
+                                <h6><b>Solde : <span class="ltr"> 99 034,67 </span> &nbsp; DA</b></h6>                            </div>
+                    </div>
+                </div>
+            </div>
+                        <div class="well well-xs">
+                <div class="row">
+                    <div class="col-xs-12">
+                                                <div class="row col-md-12">
+                            <p>
+                                <b class="danger"> <span class="ltr">-10,00 </span> &nbsp; DA </b>
+                                <span class="pull-end">Taxe : <span class="ltr">0,00</span> </span>
+                            </p>
+                        </div>
+
+                        <div class="row col-md-12">
+                            <p>205 TAXE 
+                                <span class="pull-end">Compte : 567</span>
+                            </p>
+                        </div>
+
+                                                    <div class="row col-md-12">
+                                <p>NOTIF SMS</p>
+                            </div>
+                            
+                            <div class="row col-md-12">
+                                <h6><b>Solde : <span class="ltr"> 99 024,67 </span> &nbsp; DA</b></h6>                            </div>
+                    </div>
+                </div>
+            </div>
+            
+            <hr>
+
+            
+            <p><b>25/06/2026 : </b></p>
+
+                        <div class="well well-xs">
+                <div class="row">
+                    <div class="col-xs-12">
+                                                <div class="row col-md-12">
+                            <p>
+                                <b class="danger"> <span class="ltr">-10,00 </span> &nbsp; DA </b>
+                                <span class="pull-end">Taxe : <span class="ltr">0,00</span> </span>
+                            </p>
+                        </div>
+
+                        <div class="row col-md-12">
+                            <p>205 TAXE 
+                                <span class="pull-end">Compte : 567</span>
+                            </p>
+                        </div>
+
+                                                    <div class="row col-md-12">
+                                <p>NOTIF SMS</p>
+                            </div>
+                            
+                            <div class="row col-md-12">
+                                <h6><b>Solde : <span class="ltr"> 99 014,67 </span> &nbsp; DA</b></h6>                            </div>
+                    </div>
+                </div>
+            </div>
+                        <div class="well well-xs">
+                <div class="row">
+                    <div class="col-xs-12">
+                                                <div class="row col-md-12">
+                            <p>
+                                <b class="danger"> <span class="ltr">-1 000,00 </span> &nbsp; DA </b>
+                                <span class="pull-end">Taxe : <span class="ltr">0,00</span> </span>
+                            </p>
+                        </div>
+
+                        <div class="row col-md-12">
+                            <p>223 DAB  
+                                <span class="pull-end">Compte : 334902</span>
+                            </p>
+                        </div>
+
+                                                    <div class="row col-md-12">
+                                <p>RECHARGE - OOREDOO</p>
+                            </div>
+                            
+                            <div class="row col-md-12">
+                                <h6><b>Solde : <span class="ltr"> 98 014,67 </span> &nbsp; DA</b></h6>                            </div>
+                    </div>
+                </div>
+            </div>
+            
+            <hr>
+
+            
+            <p><b>28/06/2026 : </b></p>
+
+                        <div class="well well-xs">
+                <div class="row">
+                    <div class="col-xs-12">
+                                                <div class="row col-md-12">
+                            <p>
+                                <b class="danger"> <span class="ltr">-10 000,00 </span> &nbsp; DA </b>
+                                <span class="pull-end">Taxe : <span class="ltr">12,00</span> </span>
+                            </p>
+                        </div>
+
+                        <div class="row col-md-12">
+                            <p>200 SPVIR
+                                <span class="pull-end">Compte : 8835111</span>
+                            </p>
+                        </div>
+
+                                                    <div class="row col-md-12">
+                                <p>VIREMENT</p>
+                            </div>
+                            
+                            <div class="row col-md-12">
+                                <h6><b>Solde : <span class="ltr"> 88 002,67 </span> &nbsp; DA</b></h6>                            </div>
+                    </div>
+                </div>
+            </div>
+            
+            <hr>
+
+            
+            <p><b>29/06/2026 : </b></p>
+
+                        <div class="well well-xs">
+                <div class="row">
+                    <div class="col-xs-12">
+                                                <div class="row col-md-12">
+                            <p>
+                                <b class="danger"> <span class="ltr">-28 000,00 </span> &nbsp; DA </b>
+                                <span class="pull-end">Taxe : <span class="ltr">18,00</span> </span>
+                            </p>
+                        </div>
+
+                        <div class="row col-md-12">
+                            <p>200 SPVIR
+                                <span class="pull-end">Compte : 17669926</span>
+                            </p>
+                        </div>
+
+                                                    <div class="row col-md-12">
+                                <p>VIREMENT</p>
+                            </div>
+                            
+                            <div class="row col-md-12">
+                                <h6><b>Solde : <span class="ltr"> 59 984,67 </span> &nbsp; DA</b></h6>                            </div>
+                    </div>
+                </div>
+            </div>
+                        <div class="well well-xs">
+                <div class="row">
+                    <div class="col-xs-12">
+                                                <div class="row col-md-12">
+                            <p>
+                                <b class="danger"> <span class="ltr">-10,00 </span> &nbsp; DA </b>
+                                <span class="pull-end">Taxe : <span class="ltr">0,00</span> </span>
+                            </p>
+                        </div>
+
+                        <div class="row col-md-12">
+                            <p>205 TAXE 
+                                <span class="pull-end">Compte : 567</span>
+                            </p>
+                        </div>
+
+                                                    <div class="row col-md-12">
+                                <p>NOTIF SMS</p>
+                            </div>
+                            
+                            <div class="row col-md-12">
+                                <h6><b>Solde : <span class="ltr"> 59 974,67 </span> &nbsp; DA</b></h6>                            </div>
+                    </div>
+                </div>
+            </div>
+            
+            <hr>
+
+            
+            <p><b>30/06/2026 : </b></p>
+
+                        <div class="well well-xs">
+                <div class="row">
+                    <div class="col-xs-12">
+                                                <div class="row col-md-12">
+                            <p>
+                                <b class="danger"> <span class="ltr">-10,00 </span> &nbsp; DA </b>
+                                <span class="pull-end">Taxe : <span class="ltr">0,00</span> </span>
+                            </p>
+                        </div>
+
+                        <div class="row col-md-12">
+                            <p>205 TAXE 
+                                <span class="pull-end">Compte : 567</span>
+                            </p>
+                        </div>
+
+                                                    <div class="row col-md-12">
+                                <p>NOTIF SMS</p>
+                            </div>
+                            
+                            <div class="row col-md-12">
+                                <h6><b>Solde : <span class="ltr"> 59 964,67 </span> &nbsp; DA</b></h6>                            </div>
+                    </div>
+                </div>
+            </div>
+            
+            <hr>
+
+            
+            <p><b>01/07/2026 : </b></p>
+
+                        <div class="well well-xs">
+                <div class="row">
+                    <div class="col-xs-12">
+                                                <div class="row col-md-12">
+                            <p>
+                                <b class="danger"> <span class="ltr">-10,00 </span> &nbsp; DA </b>
+                                <span class="pull-end">Taxe : <span class="ltr">0,00</span> </span>
+                            </p>
+                        </div>
+
+                        <div class="row col-md-12">
+                            <p>205 TAXE 
+                                <span class="pull-end">Compte : 567</span>
+                            </p>
+                        </div>
+
+                                                    <div class="row col-md-12">
+                                <p>NOTIF SMS</p>
+                            </div>
+                            
+                            <div class="row col-md-12">
+                                <h6><b>Solde : <span class="ltr"> 59 954,67 </span> &nbsp; DA</b></h6>                            </div>
+                    </div>
+                </div>
+            </div>
+            
+            <hr>
+
+            
+            <p><b>06/07/2026 : </b></p>
+
+                        <div class="well well-xs">
+                <div class="row">
+                    <div class="col-xs-12">
+                                                <div class="row col-md-12">
+                            <p>
+                                <b class="danger"> <span class="ltr">-100,00 </span> &nbsp; DA </b>
+                                <span class="pull-end">Taxe : <span class="ltr">0,00</span> </span>
+                            </p>
+                        </div>
+
+                        <div class="row col-md-12">
+                            <p>223 DAB  
+                                <span class="pull-end">Compte : 380693</span>
+                            </p>
+                        </div>
+
+                                                    <div class="row col-md-12">
+                                <p>RECHARGE - MOBILIS</p>
+                            </div>
+                            
+                            <div class="row col-md-12">
+                                <h6><b>Solde : <span class="ltr"> 59 854,67 </span> &nbsp; DA</b></h6>                            </div>
+                    </div>
+                </div>
+            </div>
+            
+            <hr>
+
+            
+            <p><b>09/07/2026 : </b></p>
+
+                        <div class="well well-xs">
+                <div class="row">
+                    <div class="col-xs-12">
+                                                <div class="row col-md-12">
+                            <p>
+                                <b class="danger"> <span class="ltr">-2 000,00 </span> &nbsp; DA </b>
+                                <span class="pull-end">Taxe : <span class="ltr">12,00</span> </span>
+                            </p>
+                        </div>
+
+                        <div class="row col-md-12">
+                            <p>200 SPVIR
+                                <span class="pull-end">Compte : 28501992</span>
+                            </p>
+                        </div>
+
+                                                    <div class="row col-md-12">
+                                <p>VIREMENT</p>
+                            </div>
+                            
+                            <div class="row col-md-12">
+                                <h6><b>Solde : <span class="ltr"> 57 842,67 </span> &nbsp; DA</b></h6>                            </div>
+                    </div>
+                </div>
+            </div>
+                        <div class="well well-xs">
+                <div class="row">
+                    <div class="col-xs-12">
+                                                <div class="row col-md-12">
+                            <p>
+                                <b class="danger"> <span class="ltr">-30 000,00 </span> &nbsp; DA </b>
+                                <span class="pull-end">Taxe : <span class="ltr">18,00</span> </span>
+                            </p>
+                        </div>
+
+                        <div class="row col-md-12">
+                            <p>200 SPVIR
+                                <span class="pull-end">Compte : 28983941</span>
+                            </p>
+                        </div>
+
+                                                    <div class="row col-md-12">
+                                <p>VIREMENT</p>
+                            </div>
+                            
+                            <div class="row col-md-12">
+                                <h6><b>Solde : <span class="ltr"> 27 824,67 </span> &nbsp; DA</b></h6>                            </div>
+                    </div>
+                </div>
+            </div>
+                        <div class="well well-xs">
+                <div class="row">
+                    <div class="col-xs-12">
+                                                <div class="row col-md-12">
+                            <p>
+                                <b class="danger"> <span class="ltr">-10,00 </span> &nbsp; DA </b>
+                                <span class="pull-end">Taxe : <span class="ltr">0,00</span> </span>
+                            </p>
+                        </div>
+
+                        <div class="row col-md-12">
+                            <p>205 TAXE 
+                                <span class="pull-end">Compte : 1515</span>
+                            </p>
+                        </div>
+
+                                                    <div class="row col-md-12">
+                                <p>EXTRAIT INTERNET</p>
+                            </div>
+                            
+                            <div class="row col-md-12">
+                                <h6><b>Solde : <span class="ltr"> 27 814,67 </span> &nbsp; DA</b></h6>                            </div>
+                    </div>
+                </div>
+            </div>
+            
+            <hr>
+
+            
+            <p><b>10/07/2026 : </b></p>
+
+                        <div class="well well-xs">
+                <div class="row">
+                    <div class="col-xs-12">
+                                                <div class="row col-md-12">
+                            <p>
+                                <b class="danger"> <span class="ltr">-165,00 </span> &nbsp; DA </b>
+                                <span class="pull-end">Taxe : <span class="ltr">0,00</span> </span>
+                            </p>
+                        </div>
+
+                        <div class="row col-md-12">
+                            <p>205 TAXE 
+                                <span class="pull-end">Compte : 1515</span>
+                            </p>
+                        </div>
+
+                                                    <div class="row col-md-12">
+                                <p>RELEVÉ INTERNET</p>
+                            </div>
+                            
+                            <div class="row col-md-12">
+                                <h6><b>Solde : <span class="ltr"> 27 649,67 </span> &nbsp; DA</b></h6>                            </div>
+                    </div>
+                </div>
+            </div>
+                        <div class="well well-xs">
+                <div class="row">
+                    <div class="col-xs-12">
+                                                <div class="row col-md-12">
+                            <p>
+                                <b class="danger"> <span class="ltr">-100,00 </span> &nbsp; DA </b>
+                                <span class="pull-end">Taxe : <span class="ltr">0,00</span> </span>
+                            </p>
+                        </div>
+
+                        <div class="row col-md-12">
+                            <p>223 DAB  
+                                <span class="pull-end">Compte : 381236</span>
+                            </p>
+                        </div>
+
+                                                    <div class="row col-md-12">
+                                <p>RECHARGE - DJEZZY</p>
+                            </div>
+                            
+                            <div class="row col-md-12">
+                                <h6><b>Solde : <span class="ltr"> 27 549,67 </span> &nbsp; DA</b></h6>                            </div>
+                    </div>
+                </div>
+            </div>
+            
+            <hr>
+
+            
+            <p><b>11/07/2026 : </b></p>
+
+                        <div class="well well-xs">
+                <div class="row">
+                    <div class="col-xs-12">
+                                                <div class="row col-md-12">
+                            <p>
+                                <b class="danger"> <span class="ltr">-285,00 </span> &nbsp; DA </b>
+                                <span class="pull-end">Taxe : <span class="ltr">0,00</span> </span>
+                            </p>
+                        </div>
+
+                        <div class="row col-md-12">
+                            <p>205 TAXE  
+                                <span class="pull-end">Compte : 1515</span>
+                            </p>
+                        </div>
+
+                                                    <div class="row col-md-12">
+                                <p>RELEVÉ INTERNET</p>
+                            </div>
+                            
+                            <div class="row col-md-12">
+                                <h6><b>Solde : <span class="ltr"> 27 264,67 </span> &nbsp; DA</b></h6>                            </div>
+                    </div>
+                </div>
+            </div>
+            
+            <hr>
+
+                    </div>
+    </div>
+
+    <div class="well col-md-12">
+        <div class="row">
+            <div class="col-lg-3 col-xs-6">
+                <p class="title text-larger"> Débits total :</p>
+            </div>
+            <div class="col-lg-3 col-xs-6">
+                <p class="text-larger"> <span class="ltr">-869 456,00</span> &nbsp; DA </p>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-3 col-xs-6">
+                <p class="title text-larger"> Crédits total :</p>
+            </div>
+            <div class="col-lg-3 col-xs-6">
+                <p class="text-larger"> <span class="ltr">763 768,00</span> &nbsp; DA</p>
+            </div>
+        </div>
+
+        <div class="row col-md-12">
+            <p>*Total pour la période sélectionnée</p>
+        </div>
+
+        <br>
+
+        <div class="row col-md-12">
+            <p>* Les relevés au format PDF sont disponible uniquement jusqu'à la journée j-2</p>
+        </div>
+    </div>
+
+    <br>
+</div>
+
+                </div>
+
+            </div>
+        </div>
+
+
+        <footer>
+
+            <div class="mini-footer">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-12 flex-container">
+                            <a href="https://www.poste.dz/privacy-policy" target="_blank" class="underline accent no-break" style="margin-right:10px;">
+                                Politique de protection des données.                            </a>
+                            <span style="margin-top:5px;">Copyright © 2026 Algérie Poste. Tous droits réservés.</span>
+                        </div>
+                       
+                    </div>
+                                    </div>
+            </div>
+        </footer>
+    </div>
+
+    <script src="/js/modernizr.js"></script>
+    <script src="/js/script.min.js"></script>
+    <script src="/js/main.min.js"></script>
+    <script src="/js/toastr.min.js"></script>
+    <script src="/js/validations.js"></script>
+
+    <script>
+        function isMobile() {
+            return window.matchMedia("only screen and (max-width: 760px)").matches;
+        }
+
+        if (isMobile())
+            $("#navbar-list").children(':first').before($("li.user"));
+
+        $("form.search, form.search-xs").on('submit', function(e) {
+            e.preventDefault();
+        });
+    </script>
+
+    <script>
+        var type = "info";
+        var timeOut = "";
+
+        toastr.options = {
+            "positionClass": "toast-bottom-right",
+            "timeOut": type == 'error' ? 0 : timeOut != "" ? timeOut : 8000,
+        };
+
+            </script>
+
+    
+    <script>
+        $('#navbar-main-header').on('show.bs.collapse', function() {
+            window.location.hash = "#menu";
+            $("#wrap").css({
+                'z-index': -9999
+            });
+        });
+
+        $('#navbar-main-header').on('hidden.bs.collapse', function(e) {
+            history.replaceState({}, document.title, document.URL.replace("#menu", ""));
+            $("#wrap").css({
+                'z-index': 'auto'
+            });
+        });
+
+        $(window).on('hashchange', function(e) {
+            e.preventDefault();
+            if (window.location.hash == "") {
+                history.replaceState({}, document.title, document.URL.replace("#", ""));
+                $('#navbar-main-header').collapse('hide');
+            }
+        });
+
+        $(document).click(function(event) {
+            var clickover = $(event.target);
+            var $navbar = $(".navbar-collapse");
+            var _opened = $navbar.hasClass("in");
+            if (_opened === true && !clickover.hasClass("navbar-toggle") && clickover.parents('.navbar-wrap').length == 0) {
+                event.preventDefault();
+                $navbar.collapse('hide');
+            }
+        });
+
+        $("form").submit(function(e) {
+            $("i.fa-spin").remove();
+            $("input[type=submit], button[type=submit]").attr('disabled', true);
+            var btn = $("button[type=submit]", this);
+            btn.append('<i class="fa fa-circle-o-notch fa-spin"></i>');
+            var input = $("input[type=submit].btn-primary", this);
+            input.before('<i style="margin:0 10px" class="fa fa-circle-o-notch fa-spin"></i>');
+        });
+
+        $('input.numeric, input.money').addClass('pull-start');
+
+        $(window).on("pageshow", function() {
+            $("i.fa-spin").remove();
+            $("input[type=submit], button[type=submit]").prop("disabled", false);
+        });
+    </script>
+
+
+
+    <script>
+    $(".container").addClass('large-container');
+</script>
+
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-49RZH1SZ32"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+        gtag('js', new Date());
+
+        gtag('config', 'G-49RZH1SZ32');
+    </script>
+    </body>
+
+</html>

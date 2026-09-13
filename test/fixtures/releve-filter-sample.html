@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="fr" class="ltr">
+<head>
+    <meta charset="utf-8">
+    <title>Relevé de compte - ECCP - Algérie Poste</title>
+</head>
+<body class="fr" id="services-page">
+    <div id="wrap" class="linearpage-layout">
+        <div class="services-wrap">
+            <div class="container">
+                <div class="heading-section">
+                    <h2>Relevé de compte</h2>
+                    <p>Veuillez spécifier la période du relevé</p>
+                </div>
+                <div class="row ">
+                    <div class="col-md-12">
+                        <div class="well">
+                            <form action="https://eccp.poste.dz/relev%C3%A9-de-compte" method="POST" class="form-horizontal">
+                                <input type="hidden" name="_token" value="testtoken" autocomplete="off">
+                                <div class="form-group">
+                                    <label class="col-lg-4">Relevé du :</label>
+                                    <div class="col-lg-8 form-inline date">
+                                        Jour
+                                        <select class="form-control day" name="start_day">
+                                            <option value="01">01</option>
+                                            <option value="02">02</option>
+                                            <option value="03">03</option>
+                                            <option value="04">04</option>
+                                            <option value="05">05</option>
+                                            <option value="06">06</option>
+                                            <option value="07">07</option>
+                                            <option value="08">08</option>
+                                            <option value="09">09</option>
+                                            <option value="10">10</option>
+                                            <option value="11">11</option>
+                                            <option value="12">12</option>
+                                            <option value="13">13</option>
+                                            <option value="14">14</option>
+                                            <option value="15">15</option>
+                                            <option value="16">16</option>
+                                            <option value="17">17</option>
+                                            <option value="18">18</option>
+                                            <option value="19">19</option>
+                                            <option value="20">20</option>
+                                            <option value="21">21</option>
+                                            <option value="22">22</option>
+                                            <option value="23">23</option>
+                                            <option value="24">24</option>
+                                            <option value="25">25</option>
+                                            <option value="26">26</option>
+                                            <option value="27">27</option>
+                                            <option value="28">28</option>
+                                            <option value="29">29</option>
+                                            <option value="30">30</option>
+                                            <option value="31">31</option>
+                                        </select>
+                                        Mois
+                                        <select class="form-control month" name="start_month">
+                                            <option value="01">Janvier</option>
+                                            <option value="02">Février</option>
+                                            <option value="03">Mars</option>
+                                            <option value="04" selected>Avril</option>
+                                            <option value="05">Mai</option>
+                                            <option value="06">Juin</option>
+                                            <option value="07">Juillet</option>
+                                            <option value="08">Aout</option>
+                                            <option value="09">Septembre</option>
+                                            <option value="10">Octobre</option>
+                                            <option value="11">Novembre</option>
+                                            <option value="12">Décembre</option>
+                                        </select>
+                                        Année
+                                        <select class="form-control year" name="start_year">
+                                            <option value="2024">2024</option>
+                                            <option value="2025">2025</option>
+                                            <option value="2026" selected>2026</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-lg-4">Au :</label>
+                                    <div class="col-lg-8 form-inline date">
+                                        Jour
+                                        <select class="form-control day" id="end_day" name="end_day">
+                                            <option value="01">01</option>
+                                            <option value="02">02</option>
+                                            <option value="03">03</option>
+                                            <option value="04">04</option>
+                                            <option value="05">05</option>
+                                            <option value="06">06</option>
+                                            <option value="07">07</option>
+                                            <option selected value="08">08</option>
+                                            <option value="09">09</option>
+                                            <option value="10">10</option>
+                                            <option value="11">11</option>
+                                            <option value="12">12</option>
+                                            <option value="13">13</option>
+                                            <option value="14">14</option>
+                                            <option value="15">15</option>
+                                            <option value="16">16</option>
+                                            <option value="17">17</option>
+                                            <option value="18">18</option>
+                                            <option value="19">19</option>
+                                            <option value="20">20</option>
+                                            <option value="21">21</option>
+                                            <option value="22">22</option>
+                                            <option value="23">23</option>
+                                            <option value="24">24</option>
+                                            <option value="25">25</option>
+                                            <option value="26">26</option>
+                                            <option value="27">27</option>
+                                            <option value="28">28</option>
+                                            <option value="29">29</option>
+                                            <option value="30">30</option>
+                                            <option value="31">31</option>
+                                        </select>
+                                        Mois
+                                        <select class="form-control month" id="end_month" name="end_month">
+                                            <option value="01">Janvier</option>
+                                            <option value="02">Février</option>
+                                            <option value="03">Mars</option>
+                                            <option value="04">Avril</option>
+                                            <option value="05">Mai</option>
+                                            <option value="06">Juin</option>
+                                            <option value="07" selected>Juillet</option>
+                                            <option value="08">Aout</option>
+                                            <option value="09">Septembre</option>
+                                            <option value="10">Octobre</option>
+                                            <option value="11">Novembre</option>
+                                            <option value="12">Décembre</option>
+                                        </select>
+                                        Année
+                                        <select class="form-control year" id="end_year" name="end_year">
+                                            <option value="2024" selected>2024</option>
+                                            <option value="2025" selected>2025</option>
+                                            <option value="2026" selected>2026</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <br>
+                                <div class="form-group">
+                                    <div class="col-lg-offset-4 col-lg-7">
+                                        <button class="btn btn-primary" type="submit">Afficher</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
